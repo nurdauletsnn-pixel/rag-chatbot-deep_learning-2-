@@ -105,9 +105,13 @@
 
 import streamlit as st
 import sys
+import os
 sys.path.append(".")
 
 from pipeline import RAGPipeline
+
+if "GROQ_API_KEY" in st.secrets and not os.getenv("GROQ_API_KEY"):
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 st.set_page_config(
     page_title="FastAPI RAG Chatbot",
