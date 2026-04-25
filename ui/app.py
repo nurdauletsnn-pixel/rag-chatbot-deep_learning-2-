@@ -110,8 +110,13 @@ sys.path.append(".")
 
 from pipeline import RAGPipeline
 
-if "GROQ_API_KEY" in st.secrets and not os.getenv("GROQ_API_KEY"):
-    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+try:
+    secret_groq_key = st.secrets.get("GROQ_API_KEY")
+except Exception:
+    secret_groq_key = None
+
+if secret_groq_key and not os.getenv("GROQ_API_KEY"):
+    os.environ["GROQ_API_KEY"] = secret_groq_key
 
 st.set_page_config(
     page_title="FastAPI RAG Chatbot",
