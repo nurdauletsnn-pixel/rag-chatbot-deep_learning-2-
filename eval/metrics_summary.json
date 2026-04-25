@@ -1,0 +1,16 @@
+{
+  "dataset_size": 37,
+  "supported_questions": 30,
+  "unsupported_questions": 7,
+  "top_k": 5,
+  "precision_at_5": 0.5733333333333334,
+  "recall_at_5": 0.9,
+  "answer_relevance_proxy": 0.7877248677248677,
+  "generation_enabled": true,
+  "faithfulness_proxy": 0.8977679935451905,
+  "answer_relevance_similarity": 0.44927753971235174,
+  "faithfulness_similarity": 0.49139870008504066,
+  "citation_validity": 0.5405405405405406,
+  "refusal_accuracy": 1.0,
+  "notes": []
+}

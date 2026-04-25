@@ -1,0 +1,7 @@
+component_changed,parameter_before,parameter_after,metric_before,metric_after,observation
+chunking_strategy,semantic,fixed,0.5467,0.5733,P@5 0.547 -> 0.573; R@5 0.867 -> 0.900
+chunk_size,256 tokens,384 tokens,0.5467,0.4933,P@5 0.547 -> 0.493; R@5 0.867 -> 0.867
+chunk_size,256 tokens,200 tokens,0.5467,0.5667,P@5 0.547 -> 0.567; R@5 0.867 -> 0.900
+overlap,50 tokens (~20%),26 tokens (~10%),0.5467,0.5133,P@5 0.547 -> 0.513; R@5 0.867 -> 0.900
+top_k,5,3,0.5467,0.5778,P@5 0.547 -> 0.578; R@5 0.867 -> 0.800
+top_k,5,10,0.5467,0.5467,P@5 0.547 -> 0.547; R@5 0.867 -> 0.867

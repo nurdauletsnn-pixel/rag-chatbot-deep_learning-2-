@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Local/generated indexes and caches
+data/chroma/
+eval/experiment_indexes/
+eval/chunking_*_index/
+.cache/
+models/
+
+# Optional local report outputs
+report/*.pdf

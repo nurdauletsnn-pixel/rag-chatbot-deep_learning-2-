@@ -1,0 +1,12 @@
+{
+  "ragas_run": false,
+  "reason": "RAGAS was not invoked by this lightweight evaluator.",
+  "equivalent_metrics": {
+    "answer_relevance_proxy": 0.7877248677248677,
+    "faithfulness_proxy": 0.8977679935451905,
+    "answer_relevance_similarity": 0.44927753971235174,
+    "faithfulness_similarity": 0.49139870008504066,
+    "citation_validity": 0.5405405405405406,
+    "refusal_accuracy": 1.0
+  }
+}

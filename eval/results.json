@@ -1,0 +1,1852 @@
+[
+  {
+    "question": "How do I define a path parameter in FastAPI?",
+    "expected_source_id": "tutorial/path-params",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8333333333333334,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.7265052795410156,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.72540682554245,
+        "source_id": "tutorial/body-multiple-params",
+        "citation_id": "tutorial/body-multiple-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-multiple-params",
+        "title": "Body - Multiple Parameters¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.7200464010238647,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.7140705585479736,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 5,
+        "score": 0.6702365875244141,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      }
+    ]
+  },
+  {
+    "question": "What is Depends() used for?",
+    "expected_source_id": "tutorial/dependencies",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 1.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.40465474128723145,
+        "source_id": "tutorial/dependencies/classes-as-dependencies",
+        "citation_id": "tutorial/dependencies/classes-as-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies",
+        "title": "Classes as Dependencies¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.381278932094574,
+        "source_id": "tutorial/dependencies/classes-as-dependencies",
+        "citation_id": "tutorial/dependencies/classes-as-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies",
+        "title": "Classes as Dependencies¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3770115375518799,
+        "source_id": "tutorial/dependencies/sub-dependencies",
+        "citation_id": "tutorial/dependencies/sub-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies",
+        "title": "Sub-dependencies¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3754873275756836,
+        "source_id": "tutorial/dependencies/classes-as-dependencies",
+        "citation_id": "tutorial/dependencies/classes-as-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies",
+        "title": "Classes as Dependencies¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3723123073577881,
+        "source_id": "tutorial/dependencies/sub-dependencies",
+        "citation_id": "tutorial/dependencies/sub-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies",
+        "title": "Sub-dependencies¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I enable CORS in FastAPI?",
+    "expected_source_id": "tutorial/cors",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.7142857142857143,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.6363546848297119,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.6284215450286865,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)"
+      },
+      {
+        "rank": 3,
+        "score": 0.4951130747795105,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)"
+      },
+      {
+        "rank": 4,
+        "score": 0.48652184009552,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.48458075523376465,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware"
+      }
+    ]
+  },
+  {
+    "question": "How do I handle file uploads?",
+    "expected_source_id": "tutorial/request-files",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.7,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5695226788520813,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.5494105219841003,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files"
+      },
+      {
+        "rank": 3,
+        "score": 0.541199266910553,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files"
+      },
+      {
+        "rank": 4,
+        "score": 0.5361295938491821,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files"
+      },
+      {
+        "rank": 5,
+        "score": 0.5309655070304871,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I add middleware?",
+    "expected_source_id": "tutorial/middleware",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8571428571428571,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.519360363483429,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.4560452699661255,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware"
+      },
+      {
+        "rank": 3,
+        "score": 0.4225480556488037,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.41061902046203613,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware"
+      },
+      {
+        "rank": 5,
+        "score": 0.35417473316192627,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)¶"
+      }
+    ]
+  },
+  {
+    "question": "What are query parameters?",
+    "expected_source_id": "tutorial/query-params",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8888888888888888,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5507971048355103,
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.5215486288070679,
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters"
+      },
+      {
+        "rank": 3,
+        "score": 0.5013368725776672,
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.4722203016281128,
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters"
+      },
+      {
+        "rank": 5,
+        "score": 0.4620351791381836,
+        "source_id": "tutorial/path-params-numeric-validations",
+        "citation_id": "tutorial/path-params-numeric-validations",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations",
+        "title": "Path Parameters and Numeric Validations¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I return a custom response?",
+    "expected_source_id": "advanced/custom-response",
+    "expected_refusal": false,
+    "precision_at_5": 0.6,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8571428571428571,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.49973607063293457,
+        "source_id": "advanced/additional-status-codes",
+        "citation_id": "advanced/additional-status-codes",
+        "source": "https://fastapi.tiangolo.com/advanced/additional-status-codes",
+        "title": "Additional Status Codes¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.4871937036514282,
+        "source_id": "advanced/custom-response",
+        "citation_id": "advanced/custom-response",
+        "source": "https://fastapi.tiangolo.com/advanced/custom-response",
+        "title": "Custom Response - HTML, Stream, File, others¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.4847651720046997,
+        "source_id": "advanced/custom-response",
+        "citation_id": "advanced/custom-response",
+        "source": "https://fastapi.tiangolo.com/advanced/custom-response",
+        "title": "Custom Response - HTML, Stream, File, others¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.48068153858184814,
+        "source_id": "advanced/custom-response",
+        "citation_id": "advanced/custom-response",
+        "source": "https://fastapi.tiangolo.com/advanced/custom-response",
+        "title": "Custom Response - HTML, Stream, File, others¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.4757746458053589,
+        "source_id": "advanced/response-directly",
+        "citation_id": "advanced/response-directly",
+        "source": "https://fastapi.tiangolo.com/advanced/response-directly",
+        "title": "Return a Response Directly¶"
+      }
+    ]
+  },
+  {
+    "question": "What is Pydantic used for?",
+    "expected_source_id": "tutorial/body",
+    "expected_refusal": false,
+    "precision_at_5": 0.6,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 1.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.41967177391052246,
+        "source_id": "tutorial/body-nested-models",
+        "citation_id": "tutorial/body-nested-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-nested-models",
+        "title": "Body - Nested Models¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.4158663749694824,
+        "source_id": "tutorial/body",
+        "citation_id": "tutorial/body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body",
+        "title": "Request Body"
+      },
+      {
+        "rank": 3,
+        "score": 0.4136343002319336,
+        "source_id": "alternatives",
+        "citation_id": "alternatives",
+        "source": "https://fastapi.tiangolo.com/alternatives",
+        "title": "Alternatives, Inspiration and Comparisons¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.40909016132354736,
+        "source_id": "tutorial/body",
+        "citation_id": "tutorial/body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body",
+        "title": "Request Body¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3905937671661377,
+        "source_id": "tutorial/schema-extra-example",
+        "citation_id": "tutorial/schema-extra-example",
+        "source": "https://fastapi.tiangolo.com/tutorial/schema-extra-example",
+        "title": "Declare Request Example Data¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I handle errors?",
+    "expected_source_id": "tutorial/handling-errors",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 1.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4577330946922302,
+        "source_id": "help-fastapi",
+        "citation_id": "help-fastapi",
+        "source": "https://fastapi.tiangolo.com/help-fastapi",
+        "title": "Help FastAPI - Get Help¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.42007124423980713,
+        "source_id": "tutorial/handling-errors",
+        "citation_id": "tutorial/handling-errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors",
+        "title": "Handling Errors¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.41393470764160156,
+        "source_id": "tutorial/handling-errors",
+        "citation_id": "tutorial/handling-errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors",
+        "title": "Handling Errors¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3915952444076538,
+        "source_id": "tutorial/handling-errors",
+        "citation_id": "tutorial/handling-errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors",
+        "title": "Handling Errors¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.37574630975723267,
+        "source_id": "tutorial/handling-errors",
+        "citation_id": "tutorial/handling-errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors",
+        "title": "Handling Errors¶"
+      }
+    ]
+  },
+  {
+    "question": "What is a path operation?",
+    "expected_source_id": "tutorial/first-steps",
+    "expected_refusal": false,
+    "precision_at_5": 0.4,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.9,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4736524224281311,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.4684484601020813,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.40778350830078125,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3934445381164551,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps"
+      },
+      {
+        "rank": 5,
+        "score": 0.37932634353637695,
+        "source_id": "advanced/path-operation-advanced-configuration",
+        "citation_id": "advanced/path-operation-advanced-configuration",
+        "source": "https://fastapi.tiangolo.com/advanced/path-operation-advanced-configuration",
+        "title": "Path Operation Advanced Configuration¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I add authentication?",
+    "expected_source_id": "tutorial/security",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.6666666666666666,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5579588413238525,
+        "source_id": "tutorial/security",
+        "citation_id": "tutorial/security",
+        "source": "https://fastapi.tiangolo.com/tutorial/security",
+        "title": "Security"
+      },
+      {
+        "rank": 2,
+        "score": 0.5220850110054016,
+        "source_id": "tutorial/security",
+        "citation_id": "tutorial/security",
+        "source": "https://fastapi.tiangolo.com/tutorial/security",
+        "title": "Security¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.48468923568725586,
+        "source_id": "tutorial/security",
+        "citation_id": "tutorial/security",
+        "source": "https://fastapi.tiangolo.com/tutorial/security",
+        "title": "Security¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.46296072006225586,
+        "source_id": "tutorial/security",
+        "citation_id": "tutorial/security",
+        "source": "https://fastapi.tiangolo.com/tutorial/security",
+        "title": "Security"
+      },
+      {
+        "rank": 5,
+        "score": 0.4174917936325073,
+        "source_id": "tutorial/security/oauth2-jwt",
+        "citation_id": "tutorial/security/oauth2-jwt",
+        "source": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt",
+        "title": "OAuth2 with Password (and hashing), Bearer with JWT tokens¶"
+      }
+    ]
+  },
+  {
+    "question": "What is a dependency injection?",
+    "expected_source_id": "tutorial/dependencies",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.75,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5376004576683044,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies"
+      },
+      {
+        "rank": 2,
+        "score": 0.5201282501220703,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.509615957736969,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.4614068269729614,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies"
+      },
+      {
+        "rank": 5,
+        "score": 0.4264702796936035,
+        "source_id": "tutorial/dependencies/dependencies-with-yield",
+        "citation_id": "tutorial/dependencies/dependencies-with-yield",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield",
+        "title": "Dependencies with yield¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use WebSockets?",
+    "expected_source_id": "advanced/websockets",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8333333333333334,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.6770627498626709,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.6442613005638123,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.6024076342582703,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.5848042964935303,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.5787838697433472,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I deploy FastAPI?",
+    "expected_source_id": "deployment",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.6666666666666666,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.7029599547386169,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.697883665561676,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps"
+      },
+      {
+        "rank": 3,
+        "score": 0.6939807534217834,
+        "source_id": "deployment",
+        "citation_id": "deployment",
+        "source": "https://fastapi.tiangolo.com/deployment",
+        "title": "Deployment¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.6624234914779663,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.6541569232940674,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps"
+      }
+    ]
+  },
+  {
+    "question": "What is a response model?",
+    "expected_source_id": "tutorial/response-model",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.7142857142857143,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.38771122694015503,
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type"
+      },
+      {
+        "rank": 2,
+        "score": 0.37361598014831543,
+        "source_id": "advanced/response-directly",
+        "citation_id": "advanced/response-directly",
+        "source": "https://fastapi.tiangolo.com/advanced/response-directly",
+        "title": "Return a Response Directly¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3731088638305664,
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.36263710260391235,
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3565431833267212,
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use background tasks?",
+    "expected_source_id": "tutorial/background-tasks",
+    "expected_refusal": false,
+    "precision_at_5": 1.0,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 1.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.605251669883728,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.5264185070991516,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.5220265984535217,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.5069405436515808,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.5060955882072449,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      }
+    ]
+  },
+  {
+    "question": "What are static files?",
+    "expected_source_id": "tutorial/static-files",
+    "expected_refusal": false,
+    "precision_at_5": 0.4,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.5714285714285714,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5991308689117432,
+        "source_id": "tutorial/static-files",
+        "citation_id": "tutorial/static-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/static-files",
+        "title": "Static Files¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.5533535480499268,
+        "source_id": "tutorial/static-files",
+        "citation_id": "tutorial/static-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/static-files",
+        "title": "Static Files¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.41315096616744995,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.362265944480896,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3070470094680786,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I test FastAPI apps?",
+    "expected_source_id": "tutorial/testing",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8333333333333334,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.6766617894172668,
+        "source_id": "deployment/versions",
+        "citation_id": "deployment/versions",
+        "source": "https://fastapi.tiangolo.com/deployment/versions",
+        "title": "About FastAPI versions¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.6692065000534058,
+        "source_id": "deployment/versions",
+        "citation_id": "deployment/versions",
+        "source": "https://fastapi.tiangolo.com/deployment/versions",
+        "title": "About FastAPI versions¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.6448025107383728,
+        "source_id": "tutorial/testing",
+        "citation_id": "tutorial/testing",
+        "source": "https://fastapi.tiangolo.com/tutorial/testing",
+        "title": "Testing¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.6357129216194153,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.6288087964057922,
+        "source_id": "index",
+        "citation_id": "index",
+        "source": "https://fastapi.tiangolo.com",
+        "title": "FastAPI¶"
+      }
+    ]
+  },
+  {
+    "question": "What is metadata?",
+    "expected_source_id": "tutorial/metadata",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.5,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.34051942825317383,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files"
+      },
+      {
+        "rank": 2,
+        "score": 0.33307790756225586,
+        "source_id": "features",
+        "citation_id": "features",
+        "source": "https://fastapi.tiangolo.com/features",
+        "title": "Features¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.32798564434051514,
+        "source_id": "tutorial/metadata",
+        "citation_id": "tutorial/metadata",
+        "source": "https://fastapi.tiangolo.com/tutorial/metadata",
+        "title": "Metadata and Docs URLs¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3175100088119507,
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3043648600578308,
+        "source_id": "tutorial/body-fields",
+        "citation_id": "tutorial/body-fields",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-fields",
+        "title": "Body - Fields¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use SQL databases?",
+    "expected_source_id": "tutorial/sql-databases",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8571428571428571,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.5529142618179321,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.433430552482605,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.351967453956604,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.27570807933807373,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.25577008724212646,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      }
+    ]
+  },
+  {
+    "question": "What is a bigger application structure?",
+    "expected_source_id": "tutorial/bigger-applications",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.5,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4692806005477905,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.36843907833099365,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3616730570793152,
+        "source_id": "benchmarks",
+        "citation_id": "benchmarks",
+        "source": "https://fastapi.tiangolo.com/benchmarks",
+        "title": "Benchmarks¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3448139429092407,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.331235408782959,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I handle cookies?",
+    "expected_source_id": "tutorial/cookie-params",
+    "expected_refusal": false,
+    "precision_at_5": 0.6,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8333333333333334,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4736722707748413,
+        "source_id": "tutorial/cookie-params",
+        "citation_id": "tutorial/cookie-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/cookie-params",
+        "title": "Cookie Parameters¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.45660877227783203,
+        "source_id": "tutorial/cookie-params",
+        "citation_id": "tutorial/cookie-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/cookie-params",
+        "title": "Cookie Parameters¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.42471086978912354,
+        "source_id": "tutorial/cookie-params",
+        "citation_id": "tutorial/cookie-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/cookie-params",
+        "title": "Cookie Parameters¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.36558520793914795,
+        "source_id": "tutorial/dependencies/sub-dependencies",
+        "citation_id": "tutorial/dependencies/sub-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/sub-dependencies",
+        "title": "Sub-dependencies¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3605709671974182,
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶"
+      }
+    ]
+  },
+  {
+    "question": "What are headers?",
+    "expected_source_id": "tutorial/header-params",
+    "expected_refusal": false,
+    "precision_at_5": 0.6,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.75,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.40969038009643555,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)"
+      },
+      {
+        "rank": 2,
+        "score": 0.39192652702331543,
+        "source_id": "tutorial/header-params",
+        "citation_id": "tutorial/header-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/header-params",
+        "title": "Header Parameters¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.37954699993133545,
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3737407326698303,
+        "source_id": "tutorial/header-params",
+        "citation_id": "tutorial/header-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/header-params",
+        "title": "Header Parameters¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.32105404138565063,
+        "source_id": "tutorial/header-params",
+        "citation_id": "tutorial/header-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/header-params",
+        "title": "Header Parameters¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use encoders?",
+    "expected_source_id": "tutorial/encoder",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8571428571428571,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.28302085399627686,
+        "source_id": "tutorial/encoder",
+        "citation_id": "tutorial/encoder",
+        "source": "https://fastapi.tiangolo.com/tutorial/encoder",
+        "title": "JSON Compatible Encoder¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.24530482292175293,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 3,
+        "score": 0.22753828763961792,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.2214333415031433,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 5,
+        "score": 0.21818923950195312,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      }
+    ]
+  },
+  {
+    "question": "What is schema extra?",
+    "expected_source_id": "tutorial/schema-extra-example",
+    "expected_refusal": false,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.5714285714285714,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.45041632652282715,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps"
+      },
+      {
+        "rank": 2,
+        "score": 0.4016454815864563,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3569014072418213,
+        "source_id": "alternatives",
+        "citation_id": "alternatives",
+        "source": "https://fastapi.tiangolo.com/alternatives",
+        "title": "Alternatives, Inspiration and Comparisons¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.35208117961883545,
+        "source_id": "tutorial/body-fields",
+        "citation_id": "tutorial/body-fields",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-fields",
+        "title": "Body - Fields¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3509479761123657,
+        "source_id": "alternatives",
+        "citation_id": "alternatives",
+        "source": "https://fastapi.tiangolo.com/alternatives",
+        "title": "Alternatives, Inspiration and Comparisons¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I update body data?",
+    "expected_source_id": "tutorial/body-updates",
+    "expected_refusal": false,
+    "precision_at_5": 0.4,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 1.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.3848462700843811,
+        "source_id": "tutorial/body-updates",
+        "citation_id": "tutorial/body-updates",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-updates",
+        "title": "Body - Updates¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.3656448721885681,
+        "source_id": "tutorial/body",
+        "citation_id": "tutorial/body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body",
+        "title": "Request Body¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3639072775840759,
+        "source_id": "index",
+        "citation_id": "index",
+        "source": "https://fastapi.tiangolo.com",
+        "title": "FastAPI¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.3503035306930542,
+        "source_id": "tutorial/body-multiple-params",
+        "citation_id": "tutorial/body-multiple-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-multiple-params",
+        "title": "Body - Multiple Parameters¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.34699690341949463,
+        "source_id": "tutorial/body-updates",
+        "citation_id": "tutorial/body-updates",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-updates",
+        "title": "Body - Updates¶"
+      }
+    ]
+  },
+  {
+    "question": "What are global dependencies?",
+    "expected_source_id": "tutorial/dependencies/global-dependencies",
+    "expected_refusal": false,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.7142857142857143,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4541919231414795,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.45189571380615234,
+        "source_id": "tutorial/dependencies/dependencies-with-yield",
+        "citation_id": "tutorial/dependencies/dependencies-with-yield",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield",
+        "title": "Dependencies with yield¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.4364163875579834,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies"
+      },
+      {
+        "rank": 4,
+        "score": 0.42813825607299805,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies"
+      },
+      {
+        "rank": 5,
+        "score": 0.4221762418746948,
+        "source_id": "tutorial/dependencies/dependencies-with-yield",
+        "citation_id": "tutorial/dependencies/dependencies-with-yield",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield",
+        "title": "Dependencies with yield¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use forms?",
+    "expected_source_id": "tutorial/request-forms",
+    "expected_refusal": false,
+    "precision_at_5": 0.8,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.8333333333333334,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.3322622776031494,
+        "source_id": "tutorial/request-forms",
+        "citation_id": "tutorial/request-forms",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms",
+        "title": "Form Data¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.3173484802246094,
+        "source_id": "tutorial/request-forms",
+        "citation_id": "tutorial/request-forms",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms",
+        "title": "Form Data¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.2896547317504883,
+        "source_id": "index",
+        "citation_id": "index",
+        "source": "https://fastapi.tiangolo.com",
+        "title": "FastAPI¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.28929030895233154,
+        "source_id": "tutorial/request-forms-and-files",
+        "citation_id": "tutorial/request-forms-and-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files",
+        "title": "Request Forms and Files¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.2664918303489685,
+        "source_id": "tutorial/request-forms",
+        "citation_id": "tutorial/request-forms",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms",
+        "title": "Form Data¶"
+      }
+    ]
+  },
+  {
+    "question": "What is path operation configuration?",
+    "expected_source_id": "tutorial/path-operation-configuration",
+    "expected_refusal": false,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.7142857142857143,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.500968873500824,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.49759751558303833,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.3967428207397461,
+        "source_id": "tutorial/static-files",
+        "citation_id": "tutorial/static-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/static-files",
+        "title": "Static Files¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.381394624710083,
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.3746603727340698,
+        "source_id": "index",
+        "citation_id": "index",
+        "source": "https://fastapi.tiangolo.com",
+        "title": "FastAPI¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I use extra models?",
+    "expected_source_id": "tutorial/extra-models",
+    "expected_refusal": false,
+    "precision_at_5": 0.2,
+    "recall_at_5": 1.0,
+    "answer_relevance_proxy": 0.7142857142857143,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.349761426448822,
+        "source_id": "tutorial/extra-models",
+        "citation_id": "tutorial/extra-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/extra-models",
+        "title": "Extra Models¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.3440873622894287,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.2790229320526123,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.2752215266227722,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.2627047896385193,
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I train a neural network in PyTorch?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.0,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.33984363079071045,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 2,
+        "score": 0.28181201219558716,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.26770585775375366,
+        "source_id": "tutorial/body-updates",
+        "citation_id": "tutorial/body-updates",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-updates",
+        "title": "Body - Updates¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.26624631881713867,
+        "source_id": "tutorial/extra-models",
+        "citation_id": "tutorial/extra-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/extra-models",
+        "title": "Extra Models¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.25432097911834717,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I train a convolutional neural network in PyTorch?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.5714285714285714,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.3562561273574829,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 2,
+        "score": 0.29462337493896484,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.2917451858520508,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.2873215675354004,
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters"
+      },
+      {
+        "rank": 5,
+        "score": 0.2728714942932129,
+        "source_id": "tutorial/body-nested-models",
+        "citation_id": "tutorial/body-nested-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-nested-models",
+        "title": "Body - Nested Models¶"
+      }
+    ]
+  },
+  {
+    "question": "What is the capital of Kazakhstan?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.5714285714285714,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.13773870468139648,
+        "source_id": "tutorial/header-params",
+        "citation_id": "tutorial/header-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/header-params",
+        "title": "Header Parameters¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.10943776369094849,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.10325866937637329,
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.10048335790634155,
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.10014671087265015,
+        "source_id": "tutorial",
+        "citation_id": "tutorial",
+        "source": "https://fastapi.tiangolo.com/tutorial",
+        "title": "Tutorial - User Guide¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I deploy a React app to Vercel?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.5714285714285714,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.3116888403892517,
+        "source_id": "deployment/manually",
+        "citation_id": "deployment/manually",
+        "source": "https://fastapi.tiangolo.com/deployment/manually",
+        "title": "Run a Server Manually¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.307211697101593,
+        "source_id": "deployment",
+        "citation_id": "deployment",
+        "source": "https://fastapi.tiangolo.com/deployment",
+        "title": "Deployment¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.2888343930244446,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.2745358943939209,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.26956069469451904,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps"
+      }
+    ]
+  },
+  {
+    "question": "How does backpropagation work?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.42857142857142855,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.20047682523727417,
+        "source_id": "deployment/https",
+        "citation_id": "deployment/https",
+        "source": "https://fastapi.tiangolo.com/deployment/https",
+        "title": "About HTTPS¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.19025945663452148,
+        "source_id": "deployment/https",
+        "citation_id": "deployment/https",
+        "source": "https://fastapi.tiangolo.com/deployment/https",
+        "title": "About HTTPS¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.17625045776367188,
+        "source_id": "deployment/https",
+        "citation_id": "deployment/https",
+        "source": "https://fastapi.tiangolo.com/deployment/https",
+        "title": "About HTTPS¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.17067009210586548,
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.1597602367401123,
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶"
+      }
+    ]
+  },
+  {
+    "question": "What is the price of Bitcoin today?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.2857142857142857,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.20124691724777222,
+        "source_id": "tutorial/schema-extra-example",
+        "citation_id": "tutorial/schema-extra-example",
+        "source": "https://fastapi.tiangolo.com/tutorial/schema-extra-example",
+        "title": "Declare Request Example Data¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.19703763723373413,
+        "source_id": "tutorial/body-updates",
+        "citation_id": "tutorial/body-updates",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-updates",
+        "title": "Body - Updates¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.19216716289520264,
+        "source_id": "tutorial/body-fields",
+        "citation_id": "tutorial/body-fields",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-fields",
+        "title": "Body - Fields¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.17180019617080688,
+        "source_id": "tutorial/schema-extra-example",
+        "citation_id": "tutorial/schema-extra-example",
+        "source": "https://fastapi.tiangolo.com/tutorial/schema-extra-example",
+        "title": "Declare Request Example Data¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.17151963710784912,
+        "source_id": "tutorial/schema-extra-example",
+        "citation_id": "tutorial/schema-extra-example",
+        "source": "https://fastapi.tiangolo.com/tutorial/schema-extra-example",
+        "title": "Declare Request Example Data¶"
+      }
+    ]
+  },
+  {
+    "question": "How do I configure Django middleware?",
+    "expected_source_id": "none",
+    "expected_refusal": true,
+    "precision_at_5": 0.0,
+    "recall_at_5": 0.0,
+    "answer_relevance_proxy": 0.42857142857142855,
+    "retrieved": [
+      {
+        "rank": 1,
+        "score": 0.4748866558074951,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware¶"
+      },
+      {
+        "rank": 2,
+        "score": 0.4743797779083252,
+        "source_id": "alternatives",
+        "citation_id": "alternatives",
+        "source": "https://fastapi.tiangolo.com/alternatives",
+        "title": "Alternatives, Inspiration and Comparisons¶"
+      },
+      {
+        "rank": 3,
+        "score": 0.42244064807891846,
+        "source_id": "deployment/manually",
+        "citation_id": "deployment/manually",
+        "source": "https://fastapi.tiangolo.com/deployment/manually",
+        "title": "Run a Server Manually¶"
+      },
+      {
+        "rank": 4,
+        "score": 0.4155130386352539,
+        "source_id": "alternatives",
+        "citation_id": "alternatives",
+        "source": "https://fastapi.tiangolo.com/alternatives",
+        "title": "Alternatives, Inspiration and Comparisons¶"
+      },
+      {
+        "rank": 5,
+        "score": 0.41082680225372314,
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware"
+      }
+    ]
+  }
+]

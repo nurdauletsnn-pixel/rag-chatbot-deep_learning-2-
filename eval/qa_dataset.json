@@ -1,0 +1,673 @@
+[
+  {
+    "question": "How do I define a path parameter in FastAPI?",
+    "ground_truth": "Use {param} in the route path and add it as a function parameter.",
+    "source": "tutorial/path-params",
+    "reference_answer": "Use {param} in the route path and add it as a function parameter.",
+    "source_id": "tutorial/path-params",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/path-params-numeric-validations",
+        "citation_id": "tutorial/path-params-numeric-validations",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params-numeric-validations",
+        "title": "Path Parameters and Numeric Validations¶",
+        "text": "Path Parameters and Numeric Validations\n¶\nIn the same way that you can declare more validations and metadata for query parameters with\nQuery\n, you can declare the same type of validations and metadata for path parameters with\nPath\n.\nImport\nPath\n¶\nFirst, import\nPath\nfrom\nfastapi\n, and import\nAnnotated\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nPath\n,\nQuery\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nread_items\n(\nitem_id\n:\nAnnotated\n[\nint\n,\nPath\n(\ntitle\n=\n\"The ID of the item to get\"\n)],\nq\n:\nAnnotated\n[\nstr\n|\nNone\n,\nQuery\n(\nalias\n=\n\"item-query\"\n)]\n=\nNone\n,\n):\nresults\n=\n{\n\"item_id\"\n:\nitem_id\n}\nif\nq\n:\nresults\n.\nupdate\n({\n\"q\"\n:\nq\n})\nreturn\nresults\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nPath\n,\nQuery\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nread_items\n(\nitem_id\n:\nint\n=\nPath\n(\ntitle\n=\n\"The ID of the item to get\"\n),\nq\n:\nstr\n|\nNone\n=\nQuery\n(\ndefault\n=\nNone\n,\nalias\n=\n\"item-query\"\n),\n):\nresults\n=\n{\n\"item_id\"\n:\nitem_id\n}\nif\nq\n:\nresults\n.\nupdate\n({\n\"q\"\n:\nq\n})\nreturn\nresults\nInfo\nFastAPI added support for\nAnnotated\n(and start"
+      },
+      {
+        "source_id": "tutorial/path-params",
+        "citation_id": "tutorial/path-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-params",
+        "title": "Path Parameters¶",
+        "text": "Path Parameters\n¶\nYou can declare path \"parameters\" or \"variables\" with the same syntax used by Python format strings:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nread_item\n(\nitem_id\n):\nreturn\n{\n\"item_id\"\n:\nitem_id\n}\nThe value of the path parameter\nitem_id\nwill be passed to your function as the argument\nitem_id\n.\nSo, if you run this example and go to\nhttp://127.0.0.1:8000/items/foo\n, you will see a response of:\n{\n\"item_id\"\n:\n\"foo\"\n}\nPath parameters with types\n¶\nYou can declare the type of a path parameter in the function, using standard Python type annotations:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nread_item\n(\nitem_id\n:\nint\n):\nreturn\n{\n\"item_id\"\n:\nitem_id\n}\nIn this case,\nitem_id\nis declared to be an\nint\n.\nCheck\nThis will give you editor support inside of your function, with error checks, completion, etc.\nData\nconversion\n¶\nIf you run this example and open your browser at\nhttp://127.0.0.1:8000/items/3\n, you will see a response of:\n{\n\"item_id\"\n:\n3\n}\nCheck\nNotice that the value your function received (and returned) is\n3\n, as a Python\nint\n, not a string\n\"3\"\n.\nSo,"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is Depends() used for?",
+    "ground_truth": "Depends() is used to declare dependencies for path operation functions.",
+    "source": "tutorial/dependencies",
+    "reference_answer": "Depends() is used to declare dependencies for path operation functions.",
+    "source_id": "tutorial/dependencies",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/dependencies/classes-as-dependencies",
+        "citation_id": "tutorial/dependencies/classes-as-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/classes-as-dependencies",
+        "title": "Classes as Dependencies¶",
+        "text": "Classes as Dependencies\n¶\nBefore diving deeper into the\nDependency Injection\nsystem, let's upgrade the previous example.\nA\ndict\nfrom the previous example\n¶\nIn the previous example, we were returning a\ndict\nfrom our dependency (\"dependable\"):\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nDepends\n,\nFastAPI\napp\n=\nFastAPI\n()\nasync\ndef\ncommon_parameters\n(\nq\n:\nstr\n|\nNone\n=\nNone\n,\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n100\n):\nreturn\n{\n\"q\"\n:\nq\n,\n\"skip\"\n:\nskip\n,\n\"limit\"\n:\nlimit\n}\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\ncommons\n:\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]):\nreturn\ncommons\n@app\n.\nget\n(\n\"/users/\"\n)\nasync\ndef\nread_users\n(\ncommons\n:\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]):\nreturn\ncommons\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nDepends\n,\nFastAPI\napp\n=\nFastAPI\n()\nasync\ndef\ncommon_parameters\n(\nq\n:\nstr\n|\nNone\n=\nNone\n,\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n100\n):\nreturn\n{\n\"q\"\n:\nq\n,\n\"skip\"\n:\nskip\n,\n\"limit\"\n:\nlimit\n}\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\ncommons\n:\ndict\n=\nDepends\n(\ncommon_parameters\n)):\nreturn\ncommons\n@app\n.\nget\n(\n\"/users/\"\n)\nasync\ndef\nread_us"
+      },
+      {
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶",
+        "text": "Dependencies\n¶\nFastAPI\nhas a very powerful but intuitive\nDependency Injection\nsystem.\nIt is designed to be very simple to use, and to make it very easy for any developer to integrate other components with\nFastAPI\n.\nWhat is \"Dependency Injection\"\n¶\n\"Dependency Injection\"\nmeans, in programming, that there is a way for your code (in this case, your\npath operation functions\n) to declare things that it requires to work and use: \"dependencies\".\nAnd then, that system (in this case\nFastAPI\n) will take care of doing whatever is needed to provide your code with those needed dependencies (\"inject\" the dependencies).\nThis is very useful when you need to:\nHave shared logic (the same code logic again and again).\nShare database connections.\nEnforce security, authentication, role requirements, etc.\nAnd many other things...\nAll these, while minimizing code repetition.\nFirst Steps\n¶\nLet's see a very simple example. It will be so simple that it is not very useful, for now.\nBut this way we can focus on how the\nDependency Injection\nsystem works.\nCreate a dependency, or \"dependable\"\n¶\nLet's first focus on the dependency.\nIt is just a function that can take all the same parameters that a\npath operation f"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I enable CORS in FastAPI?",
+    "ground_truth": "Install and use CORSMiddleware to handle CORS.",
+    "source": "tutorial/cors",
+    "reference_answer": "Install and use CORSMiddleware to handle CORS.",
+    "source_id": "tutorial/cors",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)¶",
+        "text": "CORS (Cross-Origin Resource Sharing)\n¶\nCORS or \"Cross-Origin Resource Sharing\"\nrefers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.\nOrigin\n¶\nAn origin is the combination of protocol (\nhttp\n,\nhttps\n), domain (\nmyapp.com\n,\nlocalhost\n,\nlocalhost.tiangolo.com\n), and port (\n80\n,\n443\n,\n8080\n).\nSo, all these are different origins:\nhttp://localhost\nhttps://localhost\nhttp://localhost:8080\nEven if they are all in\nlocalhost\n, they use different protocols or ports, so, they are different \"origins\".\nSteps\n¶\nSo, let's say you have a frontend running in your browser at\nhttp://localhost:8080\n, and its JavaScript is trying to communicate with a backend running at\nhttp://localhost\n(because we don't specify a port, the browser will assume the default port\n80\n).\nThen, the browser will send an HTTP\nOPTIONS\nrequest to the\n:80\n-backend, and if the backend sends the appropriate headers authorizing the communication from this different origin (\nhttp://localhost:8080\n) then the\n:8080\n-browser will let the JavaScript in the frontend send its request to the\n:80\n-backend.\nTo achieve this"
+      },
+      {
+        "source_id": "tutorial/cors",
+        "citation_id": "tutorial/cors",
+        "source": "https://fastapi.tiangolo.com/tutorial/cors",
+        "title": "CORS (Cross-Origin Resource Sharing)",
+        "text": "CORS (Cross-Origin Resource Sharing)\n¶\nCORS or \"Cross-Origin Resource Sharing\"\nrefers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and the backend is in a different \"origin\" than the frontend.\nOrigin\n¶\nAn origin is the combination of protocol (\nhttp\n,\nhttps\n), domain (\nmyapp.com\n,\nlocalhost\n,\nlocalhost.tiangolo.com\n), and port (\n80\n,\n443\n,\n8080\n).\nSo, all these are different origins:\nhttp://localhost\nhttps://localhost\nhttp://localhost:8080\nEven if they are all in\nlocalhost\n, they use different protocols or ports, so, they are different \"origins\".\nSteps\n¶\nSo, let's say you have a frontend running in your browser at\nhttp://localhost:8080\n, and its JavaScript is trying to communicate with a backend running at\nhttp://localhost\n(because we don't specify a port, the browser will assume the default port\n80\n).\nThen, the browser will send an HTTP\nOPTIONS\nrequest to the\n:80\n-backend, and if the backend sends the appropriate headers authorizing the communication from this different origin (\nhttp://localhost:8080\n) then the\n:8080\n-browser will let the JavaScript in the frontend send its request to the\n:80\n-backend.\nTo achieve this"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I handle file uploads?",
+    "ground_truth": "Use File and UploadFile for handling file uploads in request bodies.",
+    "source": "tutorial/request-files",
+    "reference_answer": "Use File and UploadFile for handling file uploads in request bodies.",
+    "source_id": "tutorial/request-files",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files¶",
+        "text": "Request Files\n¶\nYou can define files to be uploaded by the client using\nFile\n.\nInfo\nTo receive uploaded files, first install\npython-multipart\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\npython-multipart\nThis is because uploaded files are sent as \"form data\".\nImport\nFile\n¶\nImport\nFile\nand\nUploadFile\nfrom\nfastapi\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nAnnotated\n[\nbytes\n,\nFile\n()]):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n)}\n@app\n.\npost\n(\n\"/uploadfile/\"\n)\nasync\ndef\ncreate_upload_file\n(\nfile\n:\nUploadFile\n):\nreturn\n{\n\"filename\"\n:\nfile\n.\nfilename\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nbytes\n=\nFile\n()):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n)}\n@app\n.\npost\n(\n\"/uploadfile/\"\n)\nasync\ndef\ncreate_upload_file\n(\nfile\n:\nUploadFile\n):\nreturn\n{\n\"filename\"\n:\nfile\n.\nfilename\n}\nDefine\nFile\nParameters\n¶\nCreate file parameters the sa"
+      },
+      {
+        "source_id": "tutorial/request-files",
+        "citation_id": "tutorial/request-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files",
+        "title": "Request Files",
+        "text": "Request Files\n¶\nYou can define files to be uploaded by the client using\nFile\n.\nInfo\nTo receive uploaded files, first install\npython-multipart\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\npython-multipart\nThis is because uploaded files are sent as \"form data\".\nImport\nFile\n¶\nImport\nFile\nand\nUploadFile\nfrom\nfastapi\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nAnnotated\n[\nbytes\n,\nFile\n()]):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n)}\n@app\n.\npost\n(\n\"/uploadfile/\"\n)\nasync\ndef\ncreate_upload_file\n(\nfile\n:\nUploadFile\n):\nreturn\n{\n\"filename\"\n:\nfile\n.\nfilename\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nbytes\n=\nFile\n()):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n)}\n@app\n.\npost\n(\n\"/uploadfile/\"\n)\nasync\ndef\ncreate_upload_file\n(\nfile\n:\nUploadFile\n):\nreturn\n{\n\"filename\"\n:\nfile\n.\nfilename\n}\nDefine\nFile\nParameters\n¶\nCreate file parameters the sa"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I add middleware?",
+    "ground_truth": "Use app.add_middleware() to add custom middleware.",
+    "source": "tutorial/middleware",
+    "reference_answer": "Use app.add_middleware() to add custom middleware.",
+    "source_id": "tutorial/middleware",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware¶",
+        "text": "Middleware\n¶\nYou can add middleware to\nFastAPI\napplications.\nA \"middleware\" is a function that works with every\nrequest\nbefore it is processed by any specific\npath operation\n. And also with every\nresponse\nbefore returning it.\nIt takes each\nrequest\nthat comes to your application.\nIt can then do something to that\nrequest\nor run any needed code.\nThen it passes the\nrequest\nto be processed by the rest of the application (by some\npath operation\n).\nIt then takes the\nresponse\ngenerated by the application (by some\npath operation\n).\nIt can do something to that\nresponse\nor run any needed code.\nThen it returns the\nresponse\n.\nTechnical Details\nIf you have dependencies with\nyield\n, the exit code will run\nafter\nthe middleware.\nIf there were any background tasks (covered in the\nBackground Tasks\nsection, you will see it later), they will run\nafter\nall the middleware.\nCreate a middleware\n¶\nTo create a middleware you use the decorator\n@app.middleware(\"http\")\non top of a function.\nThe middleware function receives:\nThe\nrequest\n.\nA function\ncall_next\nthat will receive the\nrequest\nas a parameter.\nThis function will pass the\nrequest\nto the corresponding\npath operation\n.\nThen it returns the\nresponse\ngenera"
+      },
+      {
+        "source_id": "tutorial/middleware",
+        "citation_id": "tutorial/middleware",
+        "source": "https://fastapi.tiangolo.com/tutorial/middleware",
+        "title": "Middleware",
+        "text": "Middleware\n¶\nYou can add middleware to\nFastAPI\napplications.\nA \"middleware\" is a function that works with every\nrequest\nbefore it is processed by any specific\npath operation\n. And also with every\nresponse\nbefore returning it.\nIt takes each\nrequest\nthat comes to your application.\nIt can then do something to that\nrequest\nor run any needed code.\nThen it passes the\nrequest\nto be processed by the rest of the application (by some\npath operation\n).\nIt then takes the\nresponse\ngenerated by the application (by some\npath operation\n).\nIt can do something to that\nresponse\nor run any needed code.\nThen it returns the\nresponse\n.\nTechnical Details\nIf you have dependencies with\nyield\n, the exit code will run\nafter\nthe middleware.\nIf there were any background tasks (covered in the\nBackground Tasks\nsection, you will see it later), they will run\nafter\nall the middleware.\nCreate a middleware\n¶\nTo create a middleware you use the decorator\n@app.middleware(\"http\")\non top of a function.\nThe middleware function receives:\nThe\nrequest\n.\nA function\ncall_next\nthat will receive the\nrequest\nas a parameter.\nThis function will pass the\nrequest\nto the corresponding\npath operation\n.\nThen it returns the\nresponse\ngenera"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What are query parameters?",
+    "ground_truth": "Query parameters are key-value pairs after the ? in the URL.",
+    "source": "tutorial/query-params",
+    "reference_answer": "Query parameters are key-value pairs after the ? in the URL.",
+    "source_id": "tutorial/query-params",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters¶",
+        "text": "Query Parameters\n¶\nWhen you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\nfake_items_db\n=\n[{\n\"item_name\"\n:\n\"Foo\"\n},\n{\n\"item_name\"\n:\n\"Bar\"\n},\n{\n\"item_name\"\n:\n\"Baz\"\n}]\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_item\n(\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n10\n):\nreturn\nfake_items_db\n[\nskip\n:\nskip\n+\nlimit\n]\nThe query is the set of key-value pairs that go after the\n?\nin a URL, separated by\n&\ncharacters.\nFor example, in the URL:\nhttp://127.0.0.1:8000/items/?skip=0&limit=10\n...the query parameters are:\nskip\n: with a value of\n0\nlimit\n: with a value of\n10\nAs they are part of the URL, they are \"naturally\" strings.\nBut when you declare them with Python types (in the example above, as\nint\n), they are converted to that type and validated against it.\nAll the same process that applied for path parameters also applies for query parameters:\nEditor support (obviously)\nData\n\"parsing\"\nData validation\nAutomatic documentation\nDefaults\n¶\nAs query parameters are not a fixed part of a path, they can be optional and can have default values.\nIn the example above they have de"
+      },
+      {
+        "source_id": "tutorial/query-params",
+        "citation_id": "tutorial/query-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/query-params",
+        "title": "Query Parameters",
+        "text": "Query Parameters\n¶\nWhen you declare other function parameters that are not part of the path parameters, they are automatically interpreted as \"query\" parameters.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\nfake_items_db\n=\n[{\n\"item_name\"\n:\n\"Foo\"\n},\n{\n\"item_name\"\n:\n\"Bar\"\n},\n{\n\"item_name\"\n:\n\"Baz\"\n}]\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_item\n(\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n10\n):\nreturn\nfake_items_db\n[\nskip\n:\nskip\n+\nlimit\n]\nThe query is the set of key-value pairs that go after the\n?\nin a URL, separated by\n&\ncharacters.\nFor example, in the URL:\nhttp://127.0.0.1:8000/items/?skip=0&limit=10\n...the query parameters are:\nskip\n: with a value of\n0\nlimit\n: with a value of\n10\nAs they are part of the URL, they are \"naturally\" strings.\nBut when you declare them with Python types (in the example above, as\nint\n), they are converted to that type and validated against it.\nAll the same process that applied for path parameters also applies for query parameters:\nEditor support (obviously)\nData\n\"parsing\"\nData validation\nAutomatic documentation\nDefaults\n¶\nAs query parameters are not a fixed part of a path, they can be optional and can have default values.\nIn the example above they have de"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I return a custom response?",
+    "ground_truth": "Use Response classes like JSONResponse or HTMLResponse.",
+    "source": "advanced/custom-response",
+    "reference_answer": "Use Response classes like JSONResponse or HTMLResponse.",
+    "source_id": "advanced/custom-response",
+    "ground_truth_passages": [
+      {
+        "source_id": "advanced/custom-response",
+        "citation_id": "advanced/custom-response",
+        "source": "https://fastapi.tiangolo.com/advanced/custom-response",
+        "title": "Custom Response - HTML, Stream, File, others¶",
+        "text": "Custom Response - HTML, Stream, File, others\n¶\nBy default,\nFastAPI\nwill return JSON responses.\nYou can override it by returning a\nResponse\ndirectly as seen in\nReturn a Response directly\n.\nBut if you return a\nResponse\ndirectly (or any subclass, like\nJSONResponse\n), the data won't be automatically converted (even if you declare a\nresponse_model\n), and the documentation won't be automatically generated (for example, including the specific \"media type\", in the HTTP header\nContent-Type\nas part of the generated OpenAPI).\nBut you can also declare the\nResponse\nthat you want to be used (e.g. any\nResponse\nsubclass), in the\npath operation decorator\nusing the\nresponse_class\nparameter.\nThe contents that you return from your\npath operation function\nwill be put inside of that\nResponse\n.\nNote\nIf you use a response class with no media type, FastAPI will expect your response to have no content, so it will not document the response format in its generated OpenAPI docs.\nJSON Responses\n¶\nBy default FastAPI returns JSON responses.\nIf you declare a\nResponse Model\nFastAPI will use it to serialize the data to JSON, using Pydantic.\nIf you don't declare a response model, FastAPI will use the\njsonable_encoder"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is Pydantic used for?",
+    "ground_truth": "Pydantic is used for data validation and parsing.",
+    "source": "tutorial/body",
+    "reference_answer": "Pydantic is used for data validation and parsing.",
+    "source_id": "tutorial/body",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/body-nested-models",
+        "citation_id": "tutorial/body-nested-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-nested-models",
+        "title": "Body - Nested Models¶",
+        "text": "Body - Nested Models\n¶\nWith\nFastAPI\n, you can define, validate, document, and use arbitrarily deeply nested models (thanks to Pydantic).\nList fields\n¶\nYou can define an attribute to be a subtype. For example, a Python\nlist\n:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\ntax\n:\nfloat\n|\nNone\n=\nNone\ntags\n:\nlist\n=\n[]\n@app\n.\nput\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nupdate_item\n(\nitem_id\n:\nint\n,\nitem\n:\nItem\n):\nresults\n=\n{\n\"item_id\"\n:\nitem_id\n,\n\"item\"\n:\nitem\n}\nreturn\nresults\nThis will make\ntags\nbe a list, although it doesn't declare the type of the elements of the list.\nList fields with type parameter\n¶\nBut Python has a specific way to declare lists with internal types, or \"type parameters\":\nDeclare a\nlist\nwith a type parameter\n¶\nTo declare types that have type parameters (internal types), like\nlist\n,\ndict\n,\ntuple\n,\npass the internal type(s) as \"type parameters\" using square brackets:\n[\nand\n]\nmy_list\n:\nlist\n[\nstr\n]\nThat's all standard Python syntax for type declarations.\nUse that same standard syntax for model attributes with internal types.\nSo, in our example, we can"
+      },
+      {
+        "source_id": "tutorial/body",
+        "citation_id": "tutorial/body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body",
+        "title": "Request Body¶",
+        "text": "Request Body\n¶\nWhen you need to send data from a client (let's say, a browser) to your API, you send it as a\nrequest body\n.\nA\nrequest\nbody is data sent by the client to your API. A\nresponse\nbody is the data your API sends to the client.\nYour API almost always has to send a\nresponse\nbody. But clients don't necessarily need to send\nrequest bodies\nall the time, sometimes they only request a path, maybe with some query parameters, but don't send a body.\nTo declare a\nrequest\nbody, you use\nPydantic\nmodels with all their power and benefits.\nInfo\nTo send data, you should use one of:\nPOST\n(the more common),\nPUT\n,\nDELETE\nor\nPATCH\n.\nSending a body with a\nGET\nrequest has an undefined behavior in the specifications, nevertheless, it is supported by FastAPI, only for very complex/extreme use cases.\nAs it is discouraged, the interactive docs with Swagger UI won't show the documentation for the body when using\nGET\n, and proxies in the middle might not support it.\nImport Pydantic's\nBaseModel\n¶\nFirst, you need to import\nBaseModel\nfrom\npydantic\n:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\nt"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I handle errors?",
+    "ground_truth": "Use HTTPException to raise errors with status codes.",
+    "source": "tutorial/handling-errors",
+    "reference_answer": "Use HTTPException to raise errors with status codes.",
+    "source_id": "tutorial/handling-errors",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/handling-errors",
+        "citation_id": "tutorial/handling-errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors",
+        "title": "Handling Errors¶",
+        "text": "Handling Errors\n¶\nThere are many situations in which you need to notify an error to a client that is using your API.\nThis client could be a browser with a frontend, a code from someone else, an IoT device, etc.\nYou could need to tell the client that:\nThe client doesn't have enough privileges for that operation.\nThe client doesn't have access to that resource.\nThe item the client was trying to access doesn't exist.\netc.\nIn these cases, you would normally return an\nHTTP status code\nin the range of\n400\n(from 400 to 499).\nThis is similar to the 200 HTTP status codes (from 200 to 299). Those \"200\" status codes mean that somehow there was a \"success\" in the request.\nThe status codes in the 400 range mean that there was an error from the client.\nRemember all those\n\"404 Not Found\"\nerrors (and jokes)?\nUse\nHTTPException\n¶\nTo return HTTP responses with errors to the client you use\nHTTPException\n.\nImport\nHTTPException\n¶\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\n,\nHTTPException\napp\n=\nFastAPI\n()\nitems\n=\n{\n\"foo\"\n:\n\"The Foo Wrestlers\"\n}\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nread_item\n(\nitem_id\n:\nstr\n):\nif\nitem_id\nnot\nin\nitems\n:\nraise\nHTTPException\n(\nstatus_code\n=\n404\n,\ndetail\n=\n\"Item not fo"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is a path operation?",
+    "ground_truth": "A path operation is an HTTP method like GET, POST on a path.",
+    "source": "tutorial/first-steps",
+    "reference_answer": "A path operation is an HTTP method like GET, POST on a path.",
+    "source_id": "tutorial/first-steps",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps¶",
+        "text": "First Steps\n¶\nThe simplest FastAPI file could look like this:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/\"\n)\nasync\ndef\nroot\n():\nreturn\n{\n\"message\"\n:\n\"Hello World\"\n}\nCopy that to a file\nmain.py\n.\nRun the live server:\n$\n<font\ncolor\n=\n\"#4E9A06\"\n>fastapi</font>\ndev\n<span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span>  Starting development server 🚀\nSearching for package file structure from directories\nwith <font color=\"#3465A4\">__init__.py</font> files\nImporting from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span>  🐍 main.py\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span>  Importing the FastAPI app object from the module with\nthe following code:\n<u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span>  Using import string: <font color=\"#3465A4\">ma"
+      },
+      {
+        "source_id": "tutorial/first-steps",
+        "citation_id": "tutorial/first-steps",
+        "source": "https://fastapi.tiangolo.com/tutorial/first-steps",
+        "title": "First Steps",
+        "text": "First Steps\n¶\nThe simplest FastAPI file could look like this:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/\"\n)\nasync\ndef\nroot\n():\nreturn\n{\n\"message\"\n:\n\"Hello World\"\n}\nCopy that to a file\nmain.py\n.\nRun the live server:\n$\n<font\ncolor\n=\n\"#4E9A06\"\n>fastapi</font>\ndev\n<span style=\"background-color:#009485\"><font color=\"#D3D7CF\"> FastAPI </font></span> Starting development server 🚀\nSearching for package file structure from directories\nwith <font color=\"#3465A4\">__init__.py</font> files\nImporting from <font color=\"#75507B\">/home/user/code/</font><font color=\"#AD7FA8\">awesomeapp</font>\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> module </font></span> 🐍 main.py\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> code </font></span> Importing the FastAPI app object from the module with\nthe following code:\n<u style=\"text-decoration-style:solid\">from </u><u style=\"text-decoration-style:solid\"><b>main</b></u><u style=\"text-decoration-style:solid\"> import </u><u style=\"text-decoration-style:solid\"><b>app</b></u>\n<span style=\"background-color:#007166\"><font color=\"#D3D7CF\"> app </font></span> Using import string: <font color=\"#3465A4\">main:a"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I add authentication?",
+    "ground_truth": "Use dependencies with OAuth2PasswordBearer for authentication.",
+    "source": "tutorial/security",
+    "reference_answer": "Use dependencies with OAuth2PasswordBearer for authentication.",
+    "source_id": "tutorial/security",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/security/oauth2-jwt",
+        "citation_id": "tutorial/security/oauth2-jwt",
+        "source": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt",
+        "title": "OAuth2 with Password (and hashing), Bearer with JWT tokens¶",
+        "text": "OAuth2 with Password (and hashing), Bearer with JWT tokens\n¶\nNow that we have all the security flow, let's make the application actually secure, using\nJWT\ntokens and secure password hashing.\nThis code is something you can actually use in your application, save the password hashes in your database, etc.\nWe are going to start from where we left in the previous chapter and increment it.\nAbout JWT\n¶\nJWT means \"JSON Web Tokens\".\nIt's a standard to codify a JSON object in a long dense string without spaces. It looks like this:\neyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\nIt is not encrypted, so, anyone could recover the information from the contents.\nBut it's signed. So, when you receive a token that you emitted, you can verify that you actually emitted it.\nThat way, you can create a token with an expiration of, let's say, 1 week. And then when the user comes back the next day with the token, you know that user is still logged in to your system.\nAfter a week, the token will be expired and the user will not be authorized and will have to sign in again to get a new token. And if t"
+      },
+      {
+        "source_id": "tutorial/security",
+        "citation_id": "tutorial/security",
+        "source": "https://fastapi.tiangolo.com/tutorial/security",
+        "title": "Security¶",
+        "text": "Security\n¶\nThere are many ways to handle security, authentication and authorization.\nAnd it normally is a complex and \"difficult\" topic.\nIn many frameworks and systems just handling security and authentication takes a big amount of effort and code (in many cases it can be 50% or more of all the code written).\nFastAPI\nprovides several tools to help you deal with\nSecurity\neasily, rapidly, in a standard way, without having to study and learn all the security specifications.\nBut first, let's check some small concepts.\nIn a hurry?\n¶\nIf you don't care about any of these terms and you just need to add security with authentication based on username and password\nright now\n, skip to the next chapters.\nOAuth2\n¶\nOAuth2 is a specification that defines several ways to handle authentication and authorization.\nIt is quite an extensive specification and covers several complex use cases.\nIt includes ways to authenticate using a \"third party\".\nThat's what all the systems with \"login with Facebook, Google, X (Twitter), GitHub\" use underneath.\nOAuth 1\n¶\nThere was an OAuth 1, which is very different from OAuth2, and more complex, as it included direct specifications on how to encrypt the communication.\n"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is a dependency injection?",
+    "ground_truth": "Dependency injection allows sharing logic between path operations.",
+    "source": "tutorial/dependencies",
+    "reference_answer": "Dependency injection allows sharing logic between path operations.",
+    "source_id": "tutorial/dependencies",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies¶",
+        "text": "common_parameters --> read_items\ncommon_parameters --> read_users\nThis way you write shared code once and\nFastAPI\ntakes care of calling it for your\npath operations\n.\nCheck\nNotice that you don't have to create a special class and pass it somewhere to\nFastAPI\nto \"register\" it or anything similar.\nYou just pass it to\nDepends\nand\nFastAPI\nknows how to do the rest.\nShare\nAnnotated\ndependencies\n¶\nIn the examples above, you see that there's a tiny bit of\ncode duplication\n.\nWhen you need to use the\ncommon_parameters()\ndependency, you have to write the whole parameter with the type annotation and\nDepends()\n:\ncommons\n:\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]\nBut because we are using\nAnnotated\n, we can store that\nAnnotated\nvalue in a variable and use it in multiple places:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nDepends\n,\nFastAPI\napp\n=\nFastAPI\n()\nasync\ndef\ncommon_parameters\n(\nq\n:\nstr\n|\nNone\n=\nNone\n,\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n100\n):\nreturn\n{\n\"q\"\n:\nq\n,\n\"skip\"\n:\nskip\n,\n\"limit\"\n:\nlimit\n}\nCommonsDep\n=\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\ncommons\n:\nCommonsDep\n):\nreturn\ncommons\n@app\n.\nget\n(\n\"/users/\"\n)\na"
+      },
+      {
+        "source_id": "tutorial/dependencies",
+        "citation_id": "tutorial/dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies",
+        "title": "Dependencies",
+        "text": "common_parameters --> read_items\ncommon_parameters --> read_users\nThis way you write shared code once and\nFastAPI\ntakes care of calling it for your\npath operations\n.\nCheck\nNotice that you don't have to create a special class and pass it somewhere to\nFastAPI\nto \"register\" it or anything similar.\nYou just pass it to\nDepends\nand\nFastAPI\nknows how to do the rest.\nShare\nAnnotated\ndependencies\n¶\nIn the examples above, you see that there's a tiny bit of\ncode duplication\n.\nWhen you need to use the\ncommon_parameters()\ndependency, you have to write the whole parameter with the type annotation and\nDepends()\n:\ncommons\n:\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]\nBut because we are using\nAnnotated\n, we can store that\nAnnotated\nvalue in a variable and use it in multiple places:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nDepends\n,\nFastAPI\napp\n=\nFastAPI\n()\nasync\ndef\ncommon_parameters\n(\nq\n:\nstr\n|\nNone\n=\nNone\n,\nskip\n:\nint\n=\n0\n,\nlimit\n:\nint\n=\n100\n):\nreturn\n{\n\"q\"\n:\nq\n,\n\"skip\"\n:\nskip\n,\n\"limit\"\n:\nlimit\n}\nCommonsDep\n=\nAnnotated\n[\ndict\n,\nDepends\n(\ncommon_parameters\n)]\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\ncommons\n:\nCommonsDep\n):\nreturn\ncommons\n@app\n.\nget\n(\n\"/users/\"\n)\na"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use WebSockets?",
+    "ground_truth": "Use WebSocket endpoint decorator for WebSocket connections.",
+    "source": "advanced/websockets",
+    "reference_answer": "Use WebSocket endpoint decorator for WebSocket connections.",
+    "source_id": "advanced/websockets",
+    "ground_truth_passages": [
+      {
+        "source_id": "advanced/websockets",
+        "citation_id": "advanced/websockets",
+        "source": "https://fastapi.tiangolo.com/advanced/websockets",
+        "title": "WebSockets¶",
+        "text": "WebSockets\n¶\nYou can use\nWebSockets\nwith\nFastAPI\n.\nInstall\nwebsockets\n¶\nMake sure you create a\nvirtual environment\n, activate it, and install\nwebsockets\n(a Python library that makes it easy to use the \"WebSocket\" protocol):\n$\npip\ninstall\nwebsockets\n---> 100%\nWebSockets client\n¶\nIn production\n¶\nIn your production system, you probably have a frontend created with a modern framework like React, Vue.js or Angular.\nAnd to communicate using WebSockets with your backend you would probably use your frontend's utilities.\nOr you might have a native mobile application that communicates with your WebSocket backend directly, in native code.\nOr you might have any other way to communicate with the WebSocket endpoint.\nBut for this example, we'll use a very simple HTML document with some JavaScript, all inside a long string.\nThis, of course, is not optimal and you wouldn't use it for production.\nIn production you would have one of the options above.\nBut it's the simplest way to focus on the server-side of WebSockets and have a working example:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\n,\nWebSocket\nfrom\nfastapi.responses\nimport\nHTMLResponse\napp\n=\nFastAPI\n()\nhtml\n=\n\"\"\"\n<!DOCTYPE html>\n<html>\n<head>\n<ti"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I deploy FastAPI?",
+    "ground_truth": "Use Uvicorn or Gunicorn for deployment.",
+    "source": "deployment",
+    "reference_answer": "Use Uvicorn or Gunicorn for deployment.",
+    "source_id": "deployment",
+    "ground_truth_passages": [
+      {
+        "source_id": "deployment/docker",
+        "citation_id": "deployment/docker",
+        "source": "https://fastapi.tiangolo.com/deployment/docker",
+        "title": "FastAPI in Containers - Docker¶",
+        "text": "FastAPI in Containers - Docker\n¶\nWhen deploying FastAPI applications a common approach is to build a\nLinux container image\n. It's normally done using\nDocker\n. You can then deploy that container image in one of a few possible ways.\nUsing Linux containers has several advantages including\nsecurity\n,\nreplicability\n,\nsimplicity\n, and others.\nTip\nIn a hurry and already know this stuff? Jump to the\nDockerfile\nbelow 👇\n.\nDockerfile Preview 👀\nFROM\npython:3.14\nWORKDIR\n/code\nCOPY\n./requirements.txt\n/code/requirements.txt\nRUN\npip\ninstall\n--no-cache-dir\n--upgrade\n-r\n/code/requirements.txt\nCOPY\n./app\n/code/app\nCMD\n[\n\"fastapi\"\n,\n\"run\"\n,\n\"app/main.py\"\n,\n\"--port\"\n,\n\"80\"\n]\n# If running behind a proxy like Nginx or Traefik add --proxy-headers\n# CMD [\"fastapi\", \"run\", \"app/main.py\", \"--port\", \"80\", \"--proxy-headers\"]\nWhat is a Container\n¶\nContainers (mainly Linux containers) are a very\nlightweight\nway to package applications including all their dependencies and necessary files while keeping them isolated from other containers (other applications or components) in the same system.\nLinux containers run using the same Linux kernel of the host (machine, virtual machine, cloud server, etc). This just means "
+      },
+      {
+        "source_id": "deployment/server-workers",
+        "citation_id": "deployment/server-workers",
+        "source": "https://fastapi.tiangolo.com/deployment/server-workers",
+        "title": "Server Workers - Uvicorn with Workers¶",
+        "text": "Server Workers - Uvicorn with Workers\n¶\nLet's check back those deployment concepts from before:\nSecurity - HTTPS\nRunning on startup\nRestarts\nReplication (the number of processes running)\nMemory\nPrevious steps before starting\nUp to this point, with all the tutorials in the docs, you have probably been running a\nserver program\n, for example, using the\nfastapi\ncommand, that runs Uvicorn, running a\nsingle process\n.\nWhen deploying applications you will probably want to have some\nreplication of processes\nto take advantage of\nmultiple cores\nand to be able to handle more requests.\nAs you saw in the previous chapter about\nDeployment Concepts\n, there are multiple strategies you can use.\nHere I'll show you how to use\nUvicorn\nwith\nworker processes\nusing the\nfastapi\ncommand or the\nuvicorn\ncommand directly.\nInfo\nIf you are using containers, for example with Docker or Kubernetes, I'll tell you more about that in the next chapter:\nFastAPI in Containers - Docker\n.\nIn particular, when running on\nKubernetes\nyou will probably\nnot\nwant to use workers and instead run\na single Uvicorn process per container\n, but I'll tell you about it later in that chapter.\nMultiple Workers\n¶\nYou can start multiple worke"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is a response model?",
+    "ground_truth": "Response model validates and documents the response data.",
+    "source": "tutorial/response-model",
+    "reference_answer": "Response model validates and documents the response data.",
+    "source_id": "tutorial/response-model",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type¶",
+        "text": "Response Model - Return Type\n¶\nYou can declare the type used for the response by annotating the\npath operation function\nreturn type\n.\nYou can use\ntype annotations\nthe same way you would for input data in function\nparameters\n, you can use Pydantic models, lists, dictionaries, scalar values like integers, booleans, etc.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\ntax\n:\nfloat\n|\nNone\n=\nNone\ntags\n:\nlist\n[\nstr\n]\n=\n[]\n@app\n.\npost\n(\n\"/items/\"\n)\nasync\ndef\ncreate_item\n(\nitem\n:\nItem\n)\n->\nItem\n:\nreturn\nitem\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n()\n->\nlist\n[\nItem\n]:\nreturn\n[\nItem\n(\nname\n=\n\"Portal Gun\"\n,\nprice\n=\n42.0\n),\nItem\n(\nname\n=\n\"Plumbus\"\n,\nprice\n=\n32.0\n),\n]\nFastAPI will use this return type to:\nValidate\nthe returned data.\nIf the data is invalid (e.g. you are missing a field), it means that\nyour\napp code is broken, not returning what it should, and it will return a server error instead of returning incorrect data. This way you and your clients can be certain that they will receive the data and the data shape expected.\nAdd a\nJSON Schema\nfor the response, in "
+      },
+      {
+        "source_id": "tutorial/response-model",
+        "citation_id": "tutorial/response-model",
+        "source": "https://fastapi.tiangolo.com/tutorial/response-model",
+        "title": "Response Model - Return Type",
+        "text": "Response Model - Return Type\n¶\nYou can declare the type used for the response by annotating the\npath operation function\nreturn type\n.\nYou can use\ntype annotations\nthe same way you would for input data in function\nparameters\n, you can use Pydantic models, lists, dictionaries, scalar values like integers, booleans, etc.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\ntax\n:\nfloat\n|\nNone\n=\nNone\ntags\n:\nlist\n[\nstr\n]\n=\n[]\n@app\n.\npost\n(\n\"/items/\"\n)\nasync\ndef\ncreate_item\n(\nitem\n:\nItem\n)\n->\nItem\n:\nreturn\nitem\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n()\n->\nlist\n[\nItem\n]:\nreturn\n[\nItem\n(\nname\n=\n\"Portal Gun\"\n,\nprice\n=\n42.0\n),\nItem\n(\nname\n=\n\"Plumbus\"\n,\nprice\n=\n32.0\n),\n]\nFastAPI will use this return type to:\nValidate\nthe returned data.\nIf the data is invalid (e.g. you are missing a field), it means that\nyour\napp code is broken, not returning what it should, and it will return a server error instead of returning incorrect data. This way you and your clients can be certain that they will receive the data and the data shape expected.\nAdd a\nJSON Schema\nfor the response, in "
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use background tasks?",
+    "ground_truth": "Use BackgroundTasks to run tasks after response.",
+    "source": "tutorial/background-tasks",
+    "reference_answer": "Use BackgroundTasks to run tasks after response.",
+    "source_id": "tutorial/background-tasks",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/background-tasks",
+        "citation_id": "tutorial/background-tasks",
+        "source": "https://fastapi.tiangolo.com/tutorial/background-tasks",
+        "title": "Background Tasks¶",
+        "text": "Background Tasks\n¶\nYou can define background tasks to be run\nafter\nreturning a response.\nThis is useful for operations that need to happen after a request, but that the client doesn't really have to be waiting for the operation to complete before receiving the response.\nThis includes, for example:\nEmail notifications sent after performing an action:\nAs connecting to an email server and sending an email tends to be \"slow\" (several seconds), you can return the response right away and send the email notification in the background.\nProcessing data:\nFor example, let's say you receive a file that must go through a slow process, you can return a response of \"Accepted\" (HTTP 202) and process the file in the background.\nUsing\nBackgroundTasks\n¶\nFirst, import\nBackgroundTasks\nand define a parameter in your\npath operation function\nwith a type declaration of\nBackgroundTasks\n:\nPython 3.10+\nfrom\nfastapi\nimport\nBackgroundTasks\n,\nFastAPI\napp\n=\nFastAPI\n()\ndef\nwrite_notification\n(\nemail\n:\nstr\n,\nmessage\n=\n\"\"\n):\nwith\nopen\n(\n\"log.txt\"\n,\nmode\n=\n\"w\"\n)\nas\nemail_file\n:\ncontent\n=\nf\n\"notification for\n{\nemail\n}\n:\n{\nmessage\n}\n\"\nemail_file\n.\nwrite\n(\ncontent\n)\n@app\n.\npost\n(\n\"/send-notification/\n{email}\n\"\n)\nasync\nd"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What are static files?",
+    "ground_truth": "Static files are served directly without processing.",
+    "source": "tutorial/static-files",
+    "reference_answer": "Static files are served directly without processing.",
+    "source_id": "tutorial/static-files",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/static-files",
+        "citation_id": "tutorial/static-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/static-files",
+        "title": "Static Files¶",
+        "text": "Static Files\n¶\nYou can serve static files automatically from a directory using\nStaticFiles\n.\nUse\nStaticFiles\n¶\nImport\nStaticFiles\n.\n\"Mount\" a\nStaticFiles()\ninstance in a specific path.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\nfastapi.staticfiles\nimport\nStaticFiles\napp\n=\nFastAPI\n()\napp\n.\nmount\n(\n\"/static\"\n,\nStaticFiles\n(\ndirectory\n=\n\"static\"\n),\nname\n=\n\"static\"\n)\nTechnical Details\nYou could also use\nfrom starlette.staticfiles import StaticFiles\n.\nFastAPI\nprovides the same\nstarlette.staticfiles\nas\nfastapi.staticfiles\njust as a convenience for you, the developer. But it actually comes directly from Starlette.\nWhat is \"Mounting\"\n¶\n\"Mounting\" means adding a complete \"independent\" application in a specific path, that then takes care of handling all the sub-paths.\nThis is different from using an\nAPIRouter\nas a mounted application is completely independent. The OpenAPI and docs from your main application won't include anything from the mounted application, etc.\nYou can read more about this in the\nAdvanced User Guide\n.\nDetails\n¶\nThe first\n\"/static\"\nrefers to the sub-path this \"sub-application\" will be \"mounted\" on. So, any path that starts with\n\"/static\"\nwill be handled by it.\nThe\ndirec"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I test FastAPI apps?",
+    "ground_truth": "Use TestClient from FastAPI for testing.",
+    "source": "tutorial/testing",
+    "reference_answer": "Use TestClient from FastAPI for testing.",
+    "source_id": "tutorial/testing",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/testing",
+        "citation_id": "tutorial/testing",
+        "source": "https://fastapi.tiangolo.com/tutorial/testing",
+        "title": "Testing¶",
+        "text": "Testing\n¶\nThanks to\nStarlette\n, testing\nFastAPI\napplications is easy and enjoyable.\nIt is based on\nHTTPX\n, which in turn is designed based on Requests, so it's very familiar and intuitive.\nWith it, you can use\npytest\ndirectly with\nFastAPI\n.\nUsing\nTestClient\n¶\nInfo\nTo use\nTestClient\n, first install\nhttpx\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\nhttpx\nImport\nTestClient\n.\nCreate a\nTestClient\nby passing your\nFastAPI\napplication to it.\nCreate functions with a name that starts with\ntest_\n(this is standard\npytest\nconventions).\nUse the\nTestClient\nobject the same way as you do with\nhttpx\n.\nWrite simple\nassert\nstatements with the standard Python expressions that you need to check (again, standard\npytest\n).\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\nfastapi.testclient\nimport\nTestClient\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/\"\n)\nasync\ndef\nread_main\n():\nreturn\n{\n\"msg\"\n:\n\"Hello World\"\n}\nclient\n=\nTestClient\n(\napp\n)\ndef\ntest_read_main\n():\nresponse\n=\nclient\n.\nget\n(\n\"/\"\n)\nassert\nresponse\n.\nstatus_code\n==\n200\nassert\nresponse\n.\njson\n()\n==\n{\n\"msg\"\n:\n\"Hello World\"\n}\nTip\nNotice that the testing functions are normal\ndef\n, not\nasync def\n.\nAnd t"
+      },
+      {
+        "source_id": "tutorial/testing",
+        "citation_id": "tutorial/testing",
+        "source": "https://fastapi.tiangolo.com/tutorial/testing",
+        "title": "Testing",
+        "text": "Testing\n¶\nThanks to\nStarlette\n, testing\nFastAPI\napplications is easy and enjoyable.\nIt is based on\nHTTPX\n, which in turn is designed based on Requests, so it's very familiar and intuitive.\nWith it, you can use\npytest\ndirectly with\nFastAPI\n.\nUsing\nTestClient\n¶\nInfo\nTo use\nTestClient\n, first install\nhttpx\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\nhttpx\nImport\nTestClient\n.\nCreate a\nTestClient\nby passing your\nFastAPI\napplication to it.\nCreate functions with a name that starts with\ntest_\n(this is standard\npytest\nconventions).\nUse the\nTestClient\nobject the same way as you do with\nhttpx\n.\nWrite simple\nassert\nstatements with the standard Python expressions that you need to check (again, standard\npytest\n).\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\nfastapi.testclient\nimport\nTestClient\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/\"\n)\nasync\ndef\nread_main\n():\nreturn\n{\n\"msg\"\n:\n\"Hello World\"\n}\nclient\n=\nTestClient\n(\napp\n)\ndef\ntest_read_main\n():\nresponse\n=\nclient\n.\nget\n(\n\"/\"\n)\nassert\nresponse\n.\nstatus_code\n==\n200\nassert\nresponse\n.\njson\n()\n==\n{\n\"msg\"\n:\n\"Hello World\"\n}\nTip\nNotice that the testing functions are normal\ndef\n, not\nasync def\n.\nAnd t"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is metadata?",
+    "ground_truth": "Metadata adds extra information to the API documentation.",
+    "source": "tutorial/metadata",
+    "reference_answer": "Metadata adds extra information to the API documentation.",
+    "source_id": "tutorial/metadata",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/metadata",
+        "citation_id": "tutorial/metadata",
+        "source": "https://fastapi.tiangolo.com/tutorial/metadata",
+        "title": "Metadata and Docs URLs¶",
+        "text": "Metadata and Docs URLs\n¶\nYou can customize several metadata configurations in your\nFastAPI\napplication.\nMetadata for API\n¶\nYou can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs:\nParameter\nType\nDescription\ntitle\nstr\nThe title of the API.\nsummary\nstr\nA short summary of the API.\nAvailable since OpenAPI 3.1.0, FastAPI 0.99.0.\ndescription\nstr\nA short description of the API. It can use Markdown.\nversion\nstring\nThe version of the API. This is the version of your own application, not of OpenAPI. For example\n2.5.0\n.\nterms_of_service\nstr\nA URL to the Terms of Service for the API. If provided, this has to be a URL.\ncontact\ndict\nThe contact information for the exposed API. It can contain several fields.\ncontact\nfields\nParameter\nType\nDescription\nname\nstr\nThe identifying name of the contact person/organization.\nurl\nstr\nThe URL pointing to the contact information. MUST be in the format of a URL.\nemail\nstr\nThe email address of the contact person/organization. MUST be in the format of an email address.\nlicense_info\ndict\nThe license information for the exposed API. It can contain several fields.\nlicense_info\nfields\nParameter\nType\nDescription\nname\n"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use SQL databases?",
+    "ground_truth": "Use SQLAlchemy with FastAPI for database integration.",
+    "source": "tutorial/sql-databases",
+    "reference_answer": "Use SQLAlchemy with FastAPI for database integration.",
+    "source_id": "tutorial/sql-databases",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/sql-databases",
+        "citation_id": "tutorial/sql-databases",
+        "source": "https://fastapi.tiangolo.com/tutorial/sql-databases",
+        "title": "SQL (Relational) Databases¶",
+        "text": "SQL (Relational) Databases\n¶\nFastAPI\ndoesn't require you to use a SQL (relational) database. But you can use\nany database\nthat you want.\nHere we'll see an example using\nSQLModel\n.\nSQLModel\nis built on top of\nSQLAlchemy\nand Pydantic. It was made by the same author of\nFastAPI\nto be the perfect match for FastAPI applications that need to use\nSQL databases\n.\nTip\nYou could use any other SQL or NoSQL database library you want (in some cases called\n\"ORMs\"\n), FastAPI doesn't force you to use anything. 😎\nAs SQLModel is based on SQLAlchemy, you can easily use\nany database supported\nby SQLAlchemy (which makes them also supported by SQLModel), like:\nPostgreSQL\nMySQL\nSQLite\nOracle\nMicrosoft SQL Server, etc.\nIn this example, we'll use\nSQLite\n, because it uses a single file and Python has integrated support. So, you can copy this example and run it as is.\nLater, for your production application, you might want to use a database server like\nPostgreSQL\n.\nTip\nThere is an official project generator with\nFastAPI\nand\nPostgreSQL\nincluding a frontend and more tools:\nhttps://github.com/fastapi/full-stack-fastapi-template\nThis is a very simple and short tutorial, if you want to learn about databases in gene"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is a bigger application structure?",
+    "ground_truth": "Use APIRouter to organize larger applications.",
+    "source": "tutorial/bigger-applications",
+    "reference_answer": "Use APIRouter to organize larger applications.",
+    "source_id": "tutorial/bigger-applications",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/bigger-applications",
+        "citation_id": "tutorial/bigger-applications",
+        "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications",
+        "title": "Bigger Applications - Multiple Files¶",
+        "text": "Bigger Applications - Multiple Files\n¶\nIf you are building an application or a web API, it's rarely the case that you can put everything in a single file.\nFastAPI\nprovides a convenience tool to structure your application while keeping all the flexibility.\nInfo\nIf you come from Flask, this would be the equivalent of Flask's Blueprints.\nAn example file structure\n¶\nLet's say you have a file structure like this:\n.\n├── app\n│   ├── __init__.py\n│   ├── main.py\n│   ├── dependencies.py\n│   └── routers\n│   │   ├── __init__.py\n│   │   ├── items.py\n│   │   └── users.py\n│   └── internal\n│       ├── __init__.py\n│       └── admin.py\nTip\nThere are several\n__init__.py\nfiles: one in each directory or subdirectory.\nThis is what allows importing code from one file into another.\nFor example, in\napp/main.py\nyou could have a line like:\nfrom app.routers import items\nThe\napp\ndirectory contains everything. And it has an empty file\napp/__init__.py\n, so it is a \"Python package\" (a collection of \"Python modules\"):\napp\n.\nIt contains an\napp/main.py\nfile. As it is inside a Python package (a directory with a file\n__init__.py\n), it is a \"module\" of that package:\napp.main\n.\nThere's also an\napp/dependencies.py\nfile, "
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I handle cookies?",
+    "ground_truth": "Use Cookie parameter for reading cookies.",
+    "source": "tutorial/cookie-params",
+    "reference_answer": "Use Cookie parameter for reading cookies.",
+    "source_id": "tutorial/cookie-params",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/cookie-params",
+        "citation_id": "tutorial/cookie-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/cookie-params",
+        "title": "Cookie Parameters¶",
+        "text": "Cookie Parameters\n¶\nYou can define Cookie parameters the same way you define\nQuery\nand\nPath\nparameters.\nImport\nCookie\n¶\nFirst import\nCookie\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nCookie\n,\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nads_id\n:\nAnnotated\n[\nstr\n|\nNone\n,\nCookie\n()]\n=\nNone\n):\nreturn\n{\n\"ads_id\"\n:\nads_id\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nCookie\n,\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nads_id\n:\nstr\n|\nNone\n=\nCookie\n(\ndefault\n=\nNone\n)):\nreturn\n{\n\"ads_id\"\n:\nads_id\n}\nDeclare\nCookie\nparameters\n¶\nThen declare the cookie parameters using the same structure as with\nPath\nand\nQuery\n.\nYou can define the default value as well as all the extra validation or annotation parameters:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nCookie\n,\nFastAPI\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nads_id\n:\nAnnotated\n[\nstr\n|\nNone\n,\nCookie\n()]\n=\nNone\n):\nreturn\n{\n\"ads_id\"\n:\nads_id\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What are headers?",
+    "ground_truth": "Headers are key-value pairs in HTTP requests/responses.",
+    "source": "tutorial/header-params",
+    "reference_answer": "Headers are key-value pairs in HTTP requests/responses.",
+    "source_id": "tutorial/header-params",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/header-params",
+        "citation_id": "tutorial/header-params",
+        "source": "https://fastapi.tiangolo.com/tutorial/header-params",
+        "title": "Header Parameters¶",
+        "text": "Header Parameters\n¶\nYou can define Header parameters the same way you define\nQuery\n,\nPath\nand\nCookie\nparameters.\nImport\nHeader\n¶\nFirst import\nHeader\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nHeader\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nuser_agent\n:\nAnnotated\n[\nstr\n|\nNone\n,\nHeader\n()]\n=\nNone\n):\nreturn\n{\n\"User-Agent\"\n:\nuser_agent\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nHeader\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nuser_agent\n:\nstr\n|\nNone\n=\nHeader\n(\ndefault\n=\nNone\n)):\nreturn\n{\n\"User-Agent\"\n:\nuser_agent\n}\nDeclare\nHeader\nparameters\n¶\nThen declare the header parameters using the same structure as with\nPath\n,\nQuery\nand\nCookie\n.\nYou can define the default value as well as all the extra validation or annotation parameters:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nHeader\napp\n=\nFastAPI\n()\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n(\nuser_agent\n:\nAnnotated\n[\nstr\n|\nNone\n,\nHeader\n()]\n=\nNone\n):\nreturn\n{\n\"User-Agent\"\n:\nuser_agent\n}\n🤓 Other versions and variants\nPython 3.10+ - no"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use encoders?",
+    "ground_truth": "Use jsonable_encoder for converting objects to JSON.",
+    "source": "tutorial/encoder",
+    "reference_answer": "Use jsonable_encoder for converting objects to JSON.",
+    "source_id": "tutorial/encoder",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/encoder",
+        "citation_id": "tutorial/encoder",
+        "source": "https://fastapi.tiangolo.com/tutorial/encoder",
+        "title": "JSON Compatible Encoder¶",
+        "text": "JSON Compatible Encoder\n¶\nThere are some cases where you might need to convert a data type (like a Pydantic model) to something compatible with JSON (like a\ndict\n,\nlist\n, etc).\nFor example, if you need to store it in a database.\nFor that,\nFastAPI\nprovides a\njsonable_encoder()\nfunction.\nUsing the\njsonable_encoder\n¶\nLet's imagine that you have a database\nfake_db\nthat only receives JSON compatible data.\nFor example, it doesn't receive\ndatetime\nobjects, as those are not compatible with JSON.\nSo, a\ndatetime\nobject would have to be converted to a\nstr\ncontaining the data in\nISO format\n.\nThe same way, this database wouldn't receive a Pydantic model (an object with attributes), only a\ndict\n.\nYou can use\njsonable_encoder\nfor that.\nIt receives an object, like a Pydantic model, and returns a JSON compatible version:\nPython 3.10+\nfrom\ndatetime\nimport\ndatetime\nfrom\nfastapi\nimport\nFastAPI\nfrom\nfastapi.encoders\nimport\njsonable_encoder\nfrom\npydantic\nimport\nBaseModel\nfake_db\n=\n{}\nclass\nItem\n(\nBaseModel\n):\ntitle\n:\nstr\ntimestamp\n:\ndatetime\ndescription\n:\nstr\n|\nNone\n=\nNone\napp\n=\nFastAPI\n()\n@app\n.\nput\n(\n\"/items/\n{id}\n\"\n)\ndef\nupdate_item\n(\nid\n:\nstr\n,\nitem\n:\nItem\n):\njson_compatible_item_data\n=\njsonable_enc"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is schema extra?",
+    "ground_truth": "Schema extra adds custom fields to OpenAPI schema.",
+    "source": "tutorial/schema-extra-example",
+    "reference_answer": "Schema extra adds custom fields to OpenAPI schema.",
+    "source_id": "tutorial/schema-extra-example",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/schema-extra-example",
+        "citation_id": "tutorial/schema-extra-example",
+        "source": "https://fastapi.tiangolo.com/tutorial/schema-extra-example",
+        "title": "Declare Request Example Data¶",
+        "text": "Declare Request Example Data\n¶\nYou can declare examples of the data your app can receive.\nHere are several ways to do it.\nExtra JSON Schema data in Pydantic models\n¶\nYou can declare\nexamples\nfor a Pydantic model that will be added to the generated JSON Schema.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\ntax\n:\nfloat\n|\nNone\n=\nNone\nmodel_config\n=\n{\n\"json_schema_extra\"\n:\n{\n\"examples\"\n:\n[\n{\n\"name\"\n:\n\"Foo\"\n,\n\"description\"\n:\n\"A very nice Item\"\n,\n\"price\"\n:\n35.4\n,\n\"tax\"\n:\n3.2\n,\n}\n]\n}\n}\n@app\n.\nput\n(\n\"/items/\n{item_id}\n\"\n)\nasync\ndef\nupdate_item\n(\nitem_id\n:\nint\n,\nitem\n:\nItem\n):\nresults\n=\n{\n\"item_id\"\n:\nitem_id\n,\n\"item\"\n:\nitem\n}\nreturn\nresults\nThat extra info will be added as-is to the output\nJSON Schema\nfor that model, and it will be used in the API docs.\nYou can use the attribute\nmodel_config\nthat takes a\ndict\nas described in\nPydantic's docs: Configuration\n.\nYou can set\n\"json_schema_extra\"\nwith a\ndict\ncontaining any additional data you would like to show up in the generated JSON Schema, including\nexamples\n.\nTip\nYou could use the same technique to extend the JSON Schem"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I update body data?",
+    "ground_truth": "Use PATCH method for partial updates.",
+    "source": "tutorial/body-updates",
+    "reference_answer": "Use PATCH method for partial updates.",
+    "source_id": "tutorial/body-updates",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/body-updates",
+        "citation_id": "tutorial/body-updates",
+        "source": "https://fastapi.tiangolo.com/tutorial/body-updates",
+        "title": "Body - Updates¶",
+        "text": "Body - Updates\n¶\nUpdate replacing with\nPUT\n¶\nTo update an item you can use the\nHTTP\nPUT\noperation.\nYou can use the\njsonable_encoder\nto convert the input data to data that can be stored as JSON (e.g. with a NoSQL database). For example, converting\ndatetime\nto\nstr\n.\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\nfastapi.encoders\nimport\njsonable_encoder\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\n|\nNone\n=\nNone\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\n|\nNone\n=\nNone\ntax\n:\nfloat\n=\n10.5\ntags\n:\nlist\n[\nstr\n]\n=\n[]\nitems\n=\n{\n\"foo\"\n:\n{\n\"name\"\n:\n\"Foo\"\n,\n\"price\"\n:\n50.2\n},\n\"bar\"\n:\n{\n\"name\"\n:\n\"Bar\"\n,\n\"description\"\n:\n\"The bartenders\"\n,\n\"price\"\n:\n62\n,\n\"tax\"\n:\n20.2\n},\n\"baz\"\n:\n{\n\"name\"\n:\n\"Baz\"\n,\n\"description\"\n:\nNone\n,\n\"price\"\n:\n50.2\n,\n\"tax\"\n:\n10.5\n,\n\"tags\"\n:\n[]},\n}\n@app\n.\nget\n(\n\"/items/\n{item_id}\n\"\n,\nresponse_model\n=\nItem\n)\nasync\ndef\nread_item\n(\nitem_id\n:\nstr\n):\nreturn\nitems\n[\nitem_id\n]\n@app\n.\nput\n(\n\"/items/\n{item_id}\n\"\n,\nresponse_model\n=\nItem\n)\nasync\ndef\nupdate_item\n(\nitem_id\n:\nstr\n,\nitem\n:\nItem\n):\nupdate_item_encoded\n=\njsonable_encoder\n(\nitem\n)\nitems\n[\nitem_id\n]\n=\nupdate_item_encoded\nreturn\nupdate_item_encoded\nPUT\nis used to receive data that should repla"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What are global dependencies?",
+    "ground_truth": "Global dependencies apply to all path operations.",
+    "source": "tutorial/dependencies/global-dependencies",
+    "reference_answer": "Global dependencies apply to all path operations.",
+    "source_id": "tutorial/dependencies/global-dependencies",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/dependencies/global-dependencies",
+        "citation_id": "tutorial/dependencies/global-dependencies",
+        "source": "https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies",
+        "title": "Global Dependencies¶",
+        "text": "Global Dependencies\n¶\nFor some types of applications you might want to add dependencies to the whole application.\nSimilar to the way you can\nadd\ndependencies\nto the\npath operation decorators\n, you can add them to the\nFastAPI\napplication.\nIn that case, they will be applied to all the\npath operations\nin the application:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nDepends\n,\nFastAPI\n,\nHeader\n,\nHTTPException\nasync\ndef\nverify_token\n(\nx_token\n:\nAnnotated\n[\nstr\n,\nHeader\n()]):\nif\nx_token\n!=\n\"fake-super-secret-token\"\n:\nraise\nHTTPException\n(\nstatus_code\n=\n400\n,\ndetail\n=\n\"X-Token header invalid\"\n)\nasync\ndef\nverify_key\n(\nx_key\n:\nAnnotated\n[\nstr\n,\nHeader\n()]):\nif\nx_key\n!=\n\"fake-super-secret-key\"\n:\nraise\nHTTPException\n(\nstatus_code\n=\n400\n,\ndetail\n=\n\"X-Key header invalid\"\n)\nreturn\nx_key\napp\n=\nFastAPI\n(\ndependencies\n=\n[\nDepends\n(\nverify_token\n),\nDepends\n(\nverify_key\n)])\n@app\n.\nget\n(\n\"/items/\"\n)\nasync\ndef\nread_items\n():\nreturn\n[{\n\"item\"\n:\n\"Portal Gun\"\n},\n{\n\"item\"\n:\n\"Plumbus\"\n}]\n@app\n.\nget\n(\n\"/users/\"\n)\nasync\ndef\nread_users\n():\nreturn\n[{\n\"username\"\n:\n\"Rick\"\n},\n{\n\"username\"\n:\n\"Morty\"\n}]\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use forms?",
+    "ground_truth": "Use Form for form data in requests.",
+    "source": "tutorial/request-forms",
+    "reference_answer": "Use Form for form data in requests.",
+    "source_id": "tutorial/request-forms",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/request-forms-and-files",
+        "citation_id": "tutorial/request-forms-and-files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files",
+        "title": "Request Forms and Files¶",
+        "text": "Request Forms and Files\n¶\nYou can define files and form fields at the same time using\nFile\nand\nForm\n.\nInfo\nTo receive uploaded files and/or form data, first install\npython-multipart\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\npython-multipart\nImport\nFile\nand\nForm\n¶\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nForm\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nAnnotated\n[\nbytes\n,\nFile\n()],\nfileb\n:\nAnnotated\n[\nUploadFile\n,\nFile\n()],\ntoken\n:\nAnnotated\n[\nstr\n,\nForm\n()],\n):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n),\n\"token\"\n:\ntoken\n,\n\"fileb_content_type\"\n:\nfileb\n.\ncontent_type\n,\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nFile\n,\nForm\n,\nUploadFile\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/files/\"\n)\nasync\ndef\ncreate_file\n(\nfile\n:\nbytes\n=\nFile\n(),\nfileb\n:\nUploadFile\n=\nFile\n(),\ntoken\n:\nstr\n=\nForm\n()\n):\nreturn\n{\n\"file_size\"\n:\nlen\n(\nfile\n),\n\"token\"\n:\ntoken\n,\n\"fileb_content_type\"\n:\nfileb\n.\ncontent_type\n,\n}\nDefine\nFile\nand\nForm\nparameters\n¶\nCreate file and form parameters th"
+      },
+      {
+        "source_id": "tutorial/request-forms",
+        "citation_id": "tutorial/request-forms",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-forms",
+        "title": "Form Data¶",
+        "text": "Form Data\n¶\nWhen you need to receive form fields instead of JSON, you can use\nForm\n.\nInfo\nTo use forms, first install\npython-multipart\n.\nMake sure you create a\nvirtual environment\n, activate it, and then install it, for example:\n$\npip\ninstall\npython-multipart\nImport\nForm\n¶\nImport\nForm\nfrom\nfastapi\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nForm\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/login/\"\n)\nasync\ndef\nlogin\n(\nusername\n:\nAnnotated\n[\nstr\n,\nForm\n()],\npassword\n:\nAnnotated\n[\nstr\n,\nForm\n()]):\nreturn\n{\n\"username\"\n:\nusername\n}\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\nfrom\nfastapi\nimport\nFastAPI\n,\nForm\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/login/\"\n)\nasync\ndef\nlogin\n(\nusername\n:\nstr\n=\nForm\n(),\npassword\n:\nstr\n=\nForm\n()):\nreturn\n{\n\"username\"\n:\nusername\n}\nDefine\nForm\nparameters\n¶\nCreate form parameters the same way you would for\nBody\nor\nQuery\n:\nPython 3.10+\nfrom\ntyping\nimport\nAnnotated\nfrom\nfastapi\nimport\nFastAPI\n,\nForm\napp\n=\nFastAPI\n()\n@app\n.\npost\n(\n\"/login/\"\n)\nasync\ndef\nlogin\n(\nusername\n:\nAnnotated\n[\nstr\n,\nForm\n()],\npassword\n:\nAnnotated\n[\nstr\n,\nForm\n()]):\nreturn\n{\n\"username\"\n:\nusername\n}\n🤓 Other versio"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "What is path operation configuration?",
+    "ground_truth": "Configure responses, tags, summary for path operations.",
+    "source": "tutorial/path-operation-configuration",
+    "reference_answer": "Configure responses, tags, summary for path operations.",
+    "source_id": "tutorial/path-operation-configuration",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/path-operation-configuration",
+        "citation_id": "tutorial/path-operation-configuration",
+        "source": "https://fastapi.tiangolo.com/tutorial/path-operation-configuration",
+        "title": "Path Operation Configuration¶",
+        "text": "Path Operation Configuration\n¶\nThere are several parameters that you can pass to your\npath operation decorator\nto configure it.\nWarning\nNotice that these parameters are passed directly to the\npath operation decorator\n, not to your\npath operation function\n.\nResponse Status Code\n¶\nYou can define the (HTTP)\nstatus_code\nto be used in the response of your\npath operation\n.\nYou can pass directly the\nint\ncode, like\n404\n.\nBut if you don't remember what each number code is for, you can use the shortcut constants in\nstatus\n:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\n,\nstatus\nfrom\npydantic\nimport\nBaseModel\napp\n=\nFastAPI\n()\nclass\nItem\n(\nBaseModel\n):\nname\n:\nstr\ndescription\n:\nstr\n|\nNone\n=\nNone\nprice\n:\nfloat\ntax\n:\nfloat\n|\nNone\n=\nNone\ntags\n:\nset\n[\nstr\n]\n=\nset\n()\n@app\n.\npost\n(\n\"/items/\"\n,\nstatus_code\n=\nstatus\n.\nHTTP_201_CREATED\n)\nasync\ndef\ncreate_item\n(\nitem\n:\nItem\n)\n->\nItem\n:\nreturn\nitem\nThat status code will be used in the response and will be added to the OpenAPI schema.\nTechnical Details\nYou could also use\nfrom starlette import status\n.\nFastAPI\nprovides the same\nstarlette.status\nas\nfastapi.status\njust as a convenience for you, the developer. But it comes directly from Starlette.\nTags\n¶\nYou can ad"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I use extra models?",
+    "ground_truth": "Use response_model_exclude or include for model fields.",
+    "source": "tutorial/extra-models",
+    "reference_answer": "Use response_model_exclude or include for model fields.",
+    "source_id": "tutorial/extra-models",
+    "ground_truth_passages": [
+      {
+        "source_id": "tutorial/extra-models",
+        "citation_id": "tutorial/extra-models",
+        "source": "https://fastapi.tiangolo.com/tutorial/extra-models",
+        "title": "Extra Models¶",
+        "text": "Extra Models\n¶\nContinuing with the previous example, it will be common to have more than one related model.\nThis is especially the case for user models, because:\nThe\ninput model\nneeds to be able to have a password.\nThe\noutput model\nshould not have a password.\nThe\ndatabase model\nwould probably need to have a hashed password.\nDanger\nNever store user's plaintext passwords. Always store a \"secure hash\" that you can then verify.\nIf you don't know, you will learn what a \"password hash\" is in the\nsecurity chapters\n.\nMultiple models\n¶\nHere's a general idea of how the models could look like with their password fields and the places where they are used:\nPython 3.10+\nfrom\nfastapi\nimport\nFastAPI\nfrom\npydantic\nimport\nBaseModel\n,\nEmailStr\napp\n=\nFastAPI\n()\nclass\nUserIn\n(\nBaseModel\n):\nusername\n:\nstr\npassword\n:\nstr\nemail\n:\nEmailStr\nfull_name\n:\nstr\n|\nNone\n=\nNone\nclass\nUserOut\n(\nBaseModel\n):\nusername\n:\nstr\nemail\n:\nEmailStr\nfull_name\n:\nstr\n|\nNone\n=\nNone\nclass\nUserInDB\n(\nBaseModel\n):\nusername\n:\nstr\nhashed_password\n:\nstr\nemail\n:\nEmailStr\nfull_name\n:\nstr\n|\nNone\n=\nNone\ndef\nfake_password_hasher\n(\nraw_password\n:\nstr\n):\nreturn\n\"supersecret\"\n+\nraw_password\ndef\nfake_save_user\n(\nuser_in\n:\nUserIn\n):\nhashed_passw"
+      }
+    ],
+    "expected_refusal": false
+  },
+  {
+    "question": "How do I train a neural network in PyTorch?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "source": "none",
+    "reference_answer": "REFUSAL_EXPECTED",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "How do I train a convolutional neural network in PyTorch?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "What is the capital of Kazakhstan?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "How do I deploy a React app to Vercel?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "How does backpropagation work?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "What is the price of Bitcoin today?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  },
+  {
+    "question": "How do I configure Django middleware?",
+    "ground_truth": "REFUSAL_EXPECTED",
+    "reference_answer": "I cannot find this in the provided documents.",
+    "source": "none",
+    "source_id": "none",
+    "ground_truth_passages": [],
+    "expected_refusal": true
+  }
+]

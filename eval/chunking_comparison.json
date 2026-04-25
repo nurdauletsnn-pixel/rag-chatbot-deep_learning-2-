@@ -1,0 +1,318 @@
+[
+  {
+    "strategy": "fixed",
+    "chunk_count": 874,
+    "precision_at_5": 0.5733333333333334,
+    "recall_at_5": 0.9,
+    "results": [
+      {
+        "question": "How do I define a path parameter in FastAPI?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is Depends() used for?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I enable CORS in FastAPI?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle file uploads?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I add middleware?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are query parameters?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I return a custom response?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is Pydantic used for?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle errors?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a path operation?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I add authentication?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a dependency injection?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use WebSockets?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I deploy FastAPI?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a response model?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use background tasks?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are static files?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I test FastAPI apps?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is metadata?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use SQL databases?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a bigger application structure?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle cookies?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are headers?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use encoders?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is schema extra?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I update body data?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are global dependencies?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I use forms?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is path operation configuration?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I use extra models?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "chunk_count": 871,
+    "precision_at_5": 0.5466666666666666,
+    "recall_at_5": 0.8666666666666667,
+    "results": [
+      {
+        "question": "How do I define a path parameter in FastAPI?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is Depends() used for?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I enable CORS in FastAPI?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle file uploads?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I add middleware?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are query parameters?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I return a custom response?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is Pydantic used for?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle errors?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a path operation?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I add authentication?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a dependency injection?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use WebSockets?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I deploy FastAPI?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a response model?",
+        "precision_at_5": 0.8,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use background tasks?",
+        "precision_at_5": 1.0,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are static files?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I test FastAPI apps?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is metadata?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use SQL databases?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is a bigger application structure?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I handle cookies?",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are headers?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "How do I use encoders?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is schema extra?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I update body data?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What are global dependencies?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I use forms?",
+        "precision_at_5": 0.6,
+        "recall_at_5": 1.0
+      },
+      {
+        "question": "What is path operation configuration?",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0.0
+      },
+      {
+        "question": "How do I use extra models?",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0
+      }
+    ]
+  }
+]

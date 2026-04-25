@@ -1,0 +1,120 @@
+{
+  "baseline": {
+    "strategy": "semantic",
+    "chunk_size": 256,
+    "overlap": 50,
+    "top_k": 5,
+    "precision_at_5": 0.5466666666666666,
+    "recall_at_5": 0.8666666666666667
+  },
+  "experiments": [
+    {
+      "name": "fixed_chunking",
+      "component_changed": "chunking_strategy",
+      "parameter_before": "semantic",
+      "parameter_after": "fixed",
+      "config": {
+        "strategy": "fixed",
+        "chunk_size": 256,
+        "overlap": 50,
+        "top_k": 5
+      },
+      "requires_rebuild": true,
+      "score": {
+        "precision_at_5": 0.5733333333333334,
+        "recall_at_5": 0.9
+      },
+      "observation": "P@5 0.547 -> 0.573; R@5 0.867 -> 0.900"
+    },
+    {
+      "name": "larger_chunks_384",
+      "component_changed": "chunk_size",
+      "parameter_before": "256 tokens",
+      "parameter_after": "384 tokens",
+      "config": {
+        "strategy": "semantic",
+        "chunk_size": 384,
+        "overlap": 50,
+        "top_k": 5
+      },
+      "requires_rebuild": true,
+      "score": {
+        "precision_at_5": 0.49333333333333335,
+        "recall_at_5": 0.8666666666666667
+      },
+      "observation": "P@5 0.547 -> 0.493; R@5 0.867 -> 0.867"
+    },
+    {
+      "name": "smaller_chunks_200",
+      "component_changed": "chunk_size",
+      "parameter_before": "256 tokens",
+      "parameter_after": "200 tokens",
+      "config": {
+        "strategy": "semantic",
+        "chunk_size": 200,
+        "overlap": 50,
+        "top_k": 5
+      },
+      "requires_rebuild": true,
+      "score": {
+        "precision_at_5": 0.5666666666666667,
+        "recall_at_5": 0.9
+      },
+      "observation": "P@5 0.547 -> 0.567; R@5 0.867 -> 0.900"
+    },
+    {
+      "name": "lower_overlap_10pct",
+      "component_changed": "overlap",
+      "parameter_before": "50 tokens (~20%)",
+      "parameter_after": "26 tokens (~10%)",
+      "config": {
+        "strategy": "semantic",
+        "chunk_size": 256,
+        "overlap": 26,
+        "top_k": 5
+      },
+      "requires_rebuild": true,
+      "score": {
+        "precision_at_5": 0.5133333333333333,
+        "recall_at_5": 0.9
+      },
+      "observation": "P@5 0.547 -> 0.513; R@5 0.867 -> 0.900"
+    },
+    {
+      "name": "top_k_3",
+      "component_changed": "top_k",
+      "parameter_before": "5",
+      "parameter_after": "3",
+      "config": {
+        "strategy": "semantic",
+        "chunk_size": 256,
+        "overlap": 50,
+        "top_k": 3
+      },
+      "requires_rebuild": false,
+      "score": {
+        "precision_at_5": 0.5777777777777777,
+        "recall_at_5": 0.8
+      },
+      "observation": "P@5 0.547 -> 0.578; R@5 0.867 -> 0.800"
+    },
+    {
+      "name": "top_k_10",
+      "component_changed": "top_k",
+      "parameter_before": "5",
+      "parameter_after": "10",
+      "config": {
+        "strategy": "semantic",
+        "chunk_size": 256,
+        "overlap": 50,
+        "top_k": 10
+      },
+      "requires_rebuild": false,
+      "score": {
+        "precision_at_5": 0.5466666666666666,
+        "recall_at_5": 0.8666666666666667
+      },
+      "observation": "P@5 0.547 -> 0.547; R@5 0.867 -> 0.867"
+    }
+  ]
+}
