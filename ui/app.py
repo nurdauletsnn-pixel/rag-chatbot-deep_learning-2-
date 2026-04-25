@@ -171,10 +171,28 @@ html, body, [class*="css"] {
     color: var(--text1) !important;
 }
 
-/* ── HIDE CHROME ── */
-#MainMenu, footer, header { visibility: hidden; }
+/* ── STREAMLIT CHROME ── */
+#MainMenu, footer { visibility: hidden; }
+[data-testid="stHeader"] {
+    background: rgba(7, 9, 15, 0.72) !important;
+    backdrop-filter: blur(10px);
+}
+[data-testid="stToolbar"] {
+    right: 0.75rem !important;
+}
+[data-testid="collapsedControl"] {
+    color: var(--text1) !important;
+}
+[data-testid="collapsedControl"] button,
+[data-testid="stToolbar"] button {
+    border-radius: 10px !important;
+}
+[data-testid="collapsedControl"] button:hover,
+[data-testid="stToolbar"] button:hover {
+    background: rgba(0,229,255,0.12) !important;
+}
 .block-container {
-    padding: 2rem 3rem 5rem !important;
+    padding: 5rem 3rem 5rem !important;
     max-width: 1080px !important;
 }
 
@@ -479,34 +497,83 @@ html, body, [class*="css"] {
 /* ═══════════════════════════════════════
    CHAT INPUT
 ═══════════════════════════════════════ */
+[data-testid="stChatFloatingInputContainer"] {
+    position: relative;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(0,229,255,0.10), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(0,110,255,0.10), transparent 30%),
+        linear-gradient(180deg, #080b13 0%, #0d111a 45%, #090c12 100%) !important;
+    padding: 1.1rem 0 1.35rem !important;
+}
+[data-testid="stBottomBlockContainer"],
+[data-testid="stBottom"] {
+    background:
+        radial-gradient(circle at 15% 0%, rgba(0,229,255,0.10), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(0,110,255,0.10), transparent 30%),
+        linear-gradient(180deg, #080b13 0%, #0d111a 45%, #090c12 100%) !important;
+}
+[data-testid="stChatFloatingInputContainer"] > div {
+    background: transparent !important;
+}
+[data-testid="stChatFloatingInputContainer"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(9, 12, 18, 0) 0%,
+        rgba(9, 12, 18, 0.28) 20%,
+        rgba(6, 9, 14, 0.82) 100%
+    ) !important;
+    pointer-events: none;
+}
+[data-testid="stChatInput"] {
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
 [data-testid="stChatInput"] > div {
-    background: rgba(11,16,26,0.98) !important;
-    border: 1.5px solid rgba(0,229,255,0.28) !important;
-    border-radius: 18px !important;
+    background:
+        linear-gradient(145deg, rgba(11,16,26,0.96), rgba(17,24,39,0.98)) !important;
+    border: 1px solid rgba(148,163,184,0.18) !important;
+    border-radius: 24px !important;
+    padding: 0.4rem 0.45rem 0.4rem 0.65rem !important;
     box-shadow:
-        0 0 0 1px rgba(255,255,255,0.03),
-        0 18px 45px rgba(0,0,0,0.34),
-        0 0 24px rgba(0,229,255,0.08) !important;
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 16px 40px rgba(0,0,0,0.28),
+        0 0 0 1px rgba(0,229,255,0.06) !important;
     transition: border-color 0.2s, box-shadow 0.2s !important;
 }
 [data-testid="stChatInput"] > div:focus-within {
-    border-color: var(--cyan) !important;
+    border-color: rgba(0,229,255,0.42) !important;
     box-shadow:
-        0 0 0 4px rgba(0,229,255,0.12),
-        0 18px 45px rgba(0,0,0,0.36),
-        0 0 28px rgba(0,229,255,0.18) !important;
+        0 0 0 4px rgba(0,229,255,0.10),
+        0 18px 44px rgba(0,0,0,0.34),
+        0 0 26px rgba(0,229,255,0.12) !important;
 }
 [data-testid="stChatInput"] textarea,
 [data-testid="stChatInput"] textarea:focus,
 [data-testid="stChatInput"] [contenteditable="true"],
 [data-testid="stChatInput"] [data-baseweb="textarea"] textarea {
-    background: #f8fafc !important;
+    background: #eef2f7 !important;
     color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
     font-size: 15px !important;
     font-family: var(--sans) !important;
-    caret-color: #006eff !important;
-    border-radius: 10px !important;
-    padding-left: 0.85rem !important;
+    caret-color: var(--cyan) !important;
+    border-radius: 16px !important;
+    padding: 0.9rem 0.85rem !important;
+    line-height: 1.5 !important;
+    box-shadow: none !important;
+}
+[data-testid="stChatInput"] [data-baseweb="textarea"] {
+    background: #eef2f7 !important;
+    border-radius: 16px !important;
+}
+[data-testid="stChatInput"] [data-baseweb="textarea"] * {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
 }
 [data-testid="stChatInput"] textarea::placeholder,
 [data-testid="stChatInput"] [data-baseweb="textarea"] textarea::placeholder {
@@ -514,15 +581,47 @@ html, body, [class*="css"] {
     font-size: 14px !important;
 }
 [data-testid="stChatInput"] button {
-    background: linear-gradient(135deg, #ff4d5d, #ef3340) !important;
-    border: 1px solid rgba(255,255,255,0.16) !important;
-    border-radius: 12px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    background: linear-gradient(135deg, #00d5ff, #007cf0) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 14px !important;
     color: #ffffff !important;
-    box-shadow: 0 10px 24px rgba(239,51,64,0.26) !important;
+    box-shadow:
+        0 10px 24px rgba(0,124,240,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.16) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+[data-testid="stChatInput"] button:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 14px 28px rgba(0,124,240,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.18) !important;
 }
 [data-testid="stChatInput"] button svg {
     color: #ffffff !important;
     fill: #ffffff !important;
+}
+@media (max-width: 900px) {
+    [data-testid="stChatFloatingInputContainer"] {
+        padding: 0.85rem 0 1rem !important;
+    }
+    [data-testid="stChatInput"] {
+        max-width: calc(100vw - 1.25rem);
+    }
+    [data-testid="stChatInput"] > div {
+        border-radius: 20px !important;
+        padding: 0.3rem 0.35rem 0.3rem 0.45rem !important;
+    }
+    [data-testid="stChatInput"] button {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        border-radius: 12px !important;
+    }
 }
 
 /* ═══════════════════════════════════════
