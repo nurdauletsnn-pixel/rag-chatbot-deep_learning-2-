@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: bi-crm-db
+    environment:
+      POSTGRES_DB: bi_crm_db
+      POSTGRES_USER: bi_crm_user
+      POSTGRES_PASSWORD: bi_crm_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bi-crm-api
+    command: sh -c "python manage.py migrate && python manage.py generate_mock_data && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DB_NAME: bi_crm_db
+      DB_USER: bi_crm_user
+      DB_PASSWORD: bi_crm_password
+      DB_HOST: db
+      DB_PORT: 5432
+      USE_SQLITE: "False"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+
+volumes:
+  postgres_data:

@@ -1,0 +1,132 @@
+[
+  {
+    "model": "crm.branch",
+    "pk": 1,
+    "fields": {
+      "name": "Riviera International School",
+      "code": "RIVIERA",
+      "city": "Астана",
+      "segment": "SCHOOL",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 2,
+    "fields": {
+      "name": "Quantum STEM School",
+      "code": "QUANTUM_STEM",
+      "city": "Астана",
+      "segment": "SCHOOL",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 3,
+    "fields": {
+      "name": "Quantum TECH School",
+      "code": "QUANTUM_TECH",
+      "city": "Астана",
+      "segment": "SCHOOL",
+      "shares_pricing_with": 2,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 4,
+    "fields": {
+      "name": "ALDI BI Capital Park",
+      "code": "ALDI_BI_CAPITAL_PARK",
+      "city": "Астана",
+      "segment": "KINDERGARTEN",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "50000.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 5,
+    "fields": {
+      "name": "ALDI BI GreenLine.Aqua",
+      "code": "ALDI_BI_GREENLINE_AQUA",
+      "city": "Астана",
+      "segment": "KINDERGARTEN",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 6,
+    "fields": {
+      "name": "ALDI BI Flagman",
+      "code": "ALDI_BI_FLAGMAN",
+      "city": "Астана",
+      "segment": "KINDERGARTEN",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 7,
+    "fields": {
+      "name": "BINOM Astana 1",
+      "code": "BINOM_ASTANA_1",
+      "city": "Астана",
+      "segment": "FREE_SCHOOL",
+      "shares_pricing_with": null,
+      "is_free": true,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 8,
+    "fields": {
+      "name": "BINOM Astana 2",
+      "code": "BINOM_ASTANA_2",
+      "city": "Астана",
+      "segment": "FREE_SCHOOL",
+      "shares_pricing_with": null,
+      "is_free": true,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 9,
+    "fields": {
+      "name": "BINOM Atyrau 1",
+      "code": "BINOM_ATYRAU_1",
+      "city": "Атырау",
+      "segment": "FREE_SCHOOL",
+      "shares_pricing_with": null,
+      "is_free": true,
+      "subsidy_amount": "0.00"
+    }
+  },
+  {
+    "model": "crm.branch",
+    "pk": 10,
+    "fields": {
+      "name": "BIART",
+      "code": "BIART",
+      "city": "Астана",
+      "segment": "CREATIVE",
+      "shares_pricing_with": null,
+      "is_free": false,
+      "subsidy_amount": "0.00"
+    }
+  }
+]
